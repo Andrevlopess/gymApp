@@ -1,9 +1,10 @@
 import { extendTheme } from "@chakra-ui/react";
 
-export const OriginTheme = extendTheme({
+export const originTheme = extendTheme({
     colors: {
-        backgroundColor: '#181818',
+      layoutBg: "#222831",
+      compBg: "#393E46",
+      textDistact: "#00ADB5",
+      textContrast: "#EEEEEE"
     },
-    fontFamily: '"Inter", sans-serif'
-
-})
+  })
