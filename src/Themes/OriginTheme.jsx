@@ -5,6 +5,7 @@ export const originTheme = extendTheme({
       layoutBg: "#222831",
       compBg: "#393E46",
       textDistact: "#00ADB5",
-      textContrast: "#EEEEEE"
+      textContrast: "#EEEEEE",
+      lightBlue: '#A6E3E9'
     },
   })
