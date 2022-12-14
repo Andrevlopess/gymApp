@@ -5,7 +5,7 @@ import { createContext } from "react";
 export const ExercisesContext = createContext()
 
 
-export const ExercisesProvider = ({children}) =>{
+export const ExercisesProvider = ({ children }) => {
 
     const [backEx, setBackEx] = useState('')
     const [chestEx, setChestEx] = useState('')
@@ -15,96 +15,116 @@ export const ExercisesProvider = ({children}) =>{
     const [lowerArmsEx, setLowerArmsEx] = useState('')
     const [lowerLegsEx, setLowerLegsEx] = useState('')
 
-    // useEffect(()=>{
+    useEffect(() => {
 
-    //     // * GET ALL SHOULDERS EXERCISES
+        
+        // // * GET ALL SHOULDERS EXERCISES
 
-    //     fetch('http://localhost:5000/exercises?bodyPart=shoulders', {
-    //         method: 'GET',
-    //         headers:{
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => setShouldersEx(json))
-    //     .catch(err => console.log(err));
+        // fetch('http://localhost:5000/exercises?bodyPart=shoulders&_limit=5', {
+        //     method: 'GET',
+        //     headers:{
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        // .then(res => res.json())
+        // .then(json => setShouldersEx(json))
+        // .catch(err => console.log(err));
 
-    //      // * GET ALL BACK EXERCISES
+        // * GET ALL BACK EXERCISES
 
-    //      fetch('http://localhost:5000/exercises?bodyPart=back', {
-    //         method: 'GET',
-    //         headers:{
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => setBackEx(json))
-    //     .catch(err => console.log(err));
+         fetch('http://localhost:5000/exercises?bodyPart=back&_limit=5', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(json => setBackEx(json))
+            .catch(err => console.log(err));
 
-    //      // * GET ALL CHEST EXERCISES
+        // * GET ALL CHEST EXERCISES
 
-    //      fetch('http://localhost:5000/exercises?bodyPart=chest', {
-    //         method: 'GET',
-    //         headers:{
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => setChestEx(json))
-    //     .catch(err => console.log(err));
+         fetch('http://localhost:5000/exercises?bodyPart=chest&_limit=5', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(json => setChestEx(json))
+            .catch(err => console.log(err));
 
-    //      // * GET ALL UPPERLEGS EXERCISES
+        // * GET ALL UPPERLEGS EXERCISES
 
-    //      fetch('http://localhost:5000/exercises?bodyPart=upper%20legs', {
-    //         method: 'GET',
-    //         headers:{
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => setUpperLegsEx(json))
-    //     .catch(err => console.log(err));
+         fetch('http://localhost:5000/exercises?bodyPart=upper%20legs&_limit=5', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(json => setUpperLegsEx(json))
+            .catch(err => console.log(err));
 
-    //      // * GET ALL UPPER ARMS EXERCISES
+        // * GET ALL UPPER ARMS EXERCISES
 
-    //      fetch('http://localhost:5000/exercises?bodyPart=upper%20arms', {
-    //         method: 'GET',
-    //         headers:{
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => setUpperArmsEx(json))
-    //     .catch(err => console.log(err));
-
-
-    //      // * GET ALL LOWERLEGS EXERCISES
-
-    //      fetch('http://localhost:5000/exercises?bodyPart=lower%20legs', {
-    //         method: 'GET',
-    //         headers:{
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => setLowerLegsEx(json))
-    //     .catch(err => console.log(err));
+          fetch('http://localhost:5000/exercises?bodyPart=upper%20arms&_limit=5', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(json => setUpperArmsEx(json))
+            .catch(err => console.log(err));
 
 
-    //      // * GET ALL LOWER ARMS EXERCISES
+        //  // * GET ALL LOWERLEGS EXERCISES
 
-    //      fetch('http://localhost:5000/exercises?bodyPart=lower%20arms', {
-    //         method: 'GET',
-    //         headers:{
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => setLowerArmsEx(json))
-    //     .catch(err => console.log(err));
-    // }, [])
+        //  fetch('http://localhost:5000/exercises?bodyPart=lower%20legs&_limit=5', {
+        //     method: 'GET',
+        //     headers:{
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        // .then(res => res.json())
+        // .then(json => setLowerLegsEx(json))
+        // .catch(err => console.log(err));
 
-     return(
+
+        // * GET ALL LOWER ARMS EXERCISES
+
+        //  fetch('http://localhost:5000/exercises?bodyPart=lower%20arms&_limit=5', {
+        //     method: 'GET',
+        //     headers:{
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        // .then(res => res.json())
+        // .then(json => setLowerArmsEx(json))
+        // .catch(err => console.log(err));
+
+    }, [])
+
+
+
+    const personalWorkout = [
+        {   title: 'Chest',
+            exercises: chestEx,
+        },
+        {   title: 'Back',
+            exercises: backEx,
+        },
+        {   title: 'Upper Arms',
+            exercises: upperArmsEx,
+        },
+        {   title: 'Upper Legs',
+            exercises: upperLegsEx,
+        }
+    ]
+
+
+    return (
         <ExercisesContext.Provider value={{
             chestEx,
             backEx,
@@ -112,9 +132,10 @@ export const ExercisesProvider = ({children}) =>{
             lowerArmsEx,
             lowerLegsEx,
             upperLegsEx,
-            upperArmsEx
+            upperArmsEx,
+            personalWorkout
         }}>
             {children}
         </ExercisesContext.Provider>
-     )
+    )
 }
