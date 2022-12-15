@@ -32,15 +32,15 @@ function FilterProvider({ children }) {
             "bosu ball",
             "cable",
             "dumbbell",
+            "roller",
             "elliptical machine",
             "ez barbell",
             "hammer",
             "kettlebell",
-            "leverage machine",
             "medicine ball",
+            "leverage machine",
             "olympic barbell",
-            "resistance band",
-            "roller"
+            "resistance band"
         ])
         setTargets([
             "abductors",
@@ -48,6 +48,7 @@ function FilterProvider({ children }) {
             "adductors",
             "biceps",
             "calves",
+            "upper back",
             "cardiovascular system",
             "delts",
             "forearms",
@@ -61,7 +62,7 @@ function FilterProvider({ children }) {
             "spine",
             "traps",
             "triceps",
-            "upper back"
+            
         ])
 
     }, [])

@@ -7,17 +7,18 @@ export const ExercisesContext = createContext()
 
 export const ExercisesProvider = ({ children }) => {
 
-    const [backEx, setBackEx] = useState('')
-    const [chestEx, setChestEx] = useState('')
-    const [shouldersEx, setShouldersEx] = useState('')
-    const [upperLegsEx, setUpperLegsEx] = useState('')
-    const [upperArmsEx, setUpperArmsEx] = useState('')
-    const [lowerArmsEx, setLowerArmsEx] = useState('')
-    const [lowerLegsEx, setLowerLegsEx] = useState('')
+    const [backEx, setBackEx] = useState([])
+    const [chestEx, setChestEx] = useState([])
+    const [shouldersEx, setShouldersEx] = useState([])
+    const [upperLegsEx, setUpperLegsEx] = useState([])
+    const [upperArmsEx, setUpperArmsEx] = useState([])
+    const [lowerArmsEx, setLowerArmsEx] = useState([])
+    const [lowerLegsEx, setLowerLegsEx] = useState([])
+    const [allExercises, setAllExercises] = useState([])
 
     useEffect(() => {
 
-        
+
         // // * GET ALL SHOULDERS EXERCISES
 
         // fetch('http://localhost:5000/exercises?bodyPart=shoulders&_limit=5', {
@@ -32,7 +33,7 @@ export const ExercisesProvider = ({ children }) => {
 
         // * GET ALL BACK EXERCISES
 
-         fetch('http://localhost:5000/exercises?bodyPart=back&_limit=5', {
+        fetch('http://localhost:5000/exercises?bodyPart=back&_limit=5', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +45,7 @@ export const ExercisesProvider = ({ children }) => {
 
         // * GET ALL CHEST EXERCISES
 
-         fetch('http://localhost:5000/exercises?bodyPart=chest&_limit=5', {
+        fetch('http://localhost:5000/exercises?bodyPart=chest&_limit=5', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -56,7 +57,7 @@ export const ExercisesProvider = ({ children }) => {
 
         // * GET ALL UPPERLEGS EXERCISES
 
-         fetch('http://localhost:5000/exercises?bodyPart=upper%20legs&_limit=5', {
+        fetch('http://localhost:5000/exercises?bodyPart=upper%20legs&_limit=5', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -68,7 +69,7 @@ export const ExercisesProvider = ({ children }) => {
 
         // * GET ALL UPPER ARMS EXERCISES
 
-          fetch('http://localhost:5000/exercises?bodyPart=upper%20arms&_limit=5', {
+        fetch('http://localhost:5000/exercises?bodyPart=upper%20arms&_limit=5', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -104,21 +105,35 @@ export const ExercisesProvider = ({ children }) => {
         // .then(json => setLowerArmsEx(json))
         // .catch(err => console.log(err));
 
+       
+        fetch(('http://localhost:5000/exercises?&_limit=70'), {
+            method: 'GET',
+            headers:{
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(json => setAllExercises(json))
+        .catch(err => console.log(err));
+
     }, [])
-
-
+ 
 
     const personalWorkout = [
-        {   title: 'Chest',
+        {
+            title: 'Chest',
             exercises: chestEx,
         },
-        {   title: 'Back',
+        {
+            title: 'Back',
             exercises: backEx,
         },
-        {   title: 'Upper Arms',
+        {
+            title: 'Upper Arms',
             exercises: upperArmsEx,
         },
-        {   title: 'Upper Legs',
+        {
+            title: 'Upper Legs',
             exercises: upperLegsEx,
         }
     ]
@@ -133,7 +148,8 @@ export const ExercisesProvider = ({ children }) => {
             lowerLegsEx,
             upperLegsEx,
             upperArmsEx,
-            personalWorkout
+            personalWorkout,
+            allExercises
         }}>
             {children}
         </ExercisesContext.Provider>
