@@ -38,7 +38,7 @@ const WorkoutTable = ({ target }) => {
                         {target.exercises ?
                             target.exercises.map((ex) => {
                                 return (
-                                    <Tr>
+                                    <Tr key={ex.id}>
                                         <Td>{ex.name}</Td>
                                         <Td>{ex.target}</Td>
                                         <Td><Image src={ex.gifUrl} boxSize="100px" minW='100px' /></Td>
@@ -50,7 +50,6 @@ const WorkoutTable = ({ target }) => {
                                             <Button colorScheme='teal' variant='ghost'>
                                                 Details
                                             </Button>
-
                                         </Td>
                                     </Tr>
                                 )

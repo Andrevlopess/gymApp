@@ -9,6 +9,8 @@ import './App.css'
 import WorkoutPlan from './Pages/WorkoutPlan';
 import GymPage from './Pages/GymPage';
 import AboutUs from './Pages/AboutUs';
+import ExercicesExemples from './Pages/ExercicesExemples';
+import FilterProvider from './Contexts/FilterContext';
 
 
 function App() {
@@ -17,13 +19,16 @@ function App() {
     <Router>
       <ChakraProvider theme={originTheme}>
         <ExercisesProvider>
-          <Header />
-          <Routes>
-            <Route path='/' element={<Home/>}></Route>
-            <Route path='/workoutplan' element={<WorkoutPlan/>}></Route>
-            <Route path='/gymPage' element={<GymPage/>}></Route>
-            <Route path='/aboutUs' element={<AboutUs/>}></Route>
-          </Routes>
+          <FilterProvider>
+            <Header />
+            <Routes>
+              <Route path='/' element={<Home />}></Route>
+              <Route path='/workoutplan' element={<WorkoutPlan />}></Route>
+              <Route path='/gymPage' element={<GymPage />}></Route>
+              <Route path='/aboutUs' element={<AboutUs />}></Route>
+              <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
+            </Routes>
+          </FilterProvider>
         </ExercisesProvider>
       </ChakraProvider>
     </Router>

@@ -29,14 +29,18 @@ const Header = () => {
 
         <HStack spacing='1em' color='textContrast'>
           <Box >
-            <Link to="/workoutPlan">Meu treino</Link>
+            <Link to="/workoutPlan">My Workout</Link>
+          </Box>
+           <Box>
+            <Link to="/exercisesExamples">Exercises</Link>
           </Box>
           <Box>
-            <Link to="/gymPage">Academia</Link>
+            <Link to="/gymPage">The Gym</Link>
           </Box>
           <Box>
-            <Link to="/aboutUs">Sobre nós</Link>
+            <Link to="/aboutUs">About us</Link>
           </Box>
+         
         </HStack>
       </Show>
 

@@ -16,9 +16,9 @@ const WorkoutList = () => {
             >
                 <TabList>
                     { personalWorkout ?
-                        personalWorkout.map((ex, index) => {
+                        personalWorkout.map((ex) => {
                             return (
-                                <Tab>{ex.title}</Tab>
+                                <Tab key={ex.id}>{ex.title}</Tab>
                             )
                         })
                         : 
@@ -29,8 +29,8 @@ const WorkoutList = () => {
                     {
                         personalWorkout?.map((target) => {
                             return (
-                                <TabPanel>
-                                    <WorkoutTable target={target} />
+                                <TabPanel key={target.id}>
+                                    <WorkoutTable target={target} key={target.id}/>
                                 </TabPanel>
                             )
                         })
