@@ -2,10 +2,15 @@ import { Box, Button, Center, Highlight, Input, Text } from '@chakra-ui/react'
 import React from 'react'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 
-const Pagination = ({ setCurrentPage, currPage }) => {
+const Pagination = ({ setCurrentPage, currPage, totalEx, exPerPage }) => {
 
+    const Pages = Math.ceil(totalEx / exPerPage)
+    
+    
     const nextPage = () => {
-        setCurrentPage(currPage + 1)
+        if(currPage < Pages){
+            setCurrentPage(currPage + 1)
+        }
     }
 
     const previousPage = () => {
@@ -20,7 +25,6 @@ const Pagination = ({ setCurrentPage, currPage }) => {
             <Button onClick={previousPage}><GrFormPrevious size='1.5em' /></Button>
             <Center
                 p='5px'
-
                 color='black'
             >
                 <Input
@@ -31,11 +35,19 @@ const Pagination = ({ setCurrentPage, currPage }) => {
                     border='none'
                     outline='none'
                     borderRadius='20px'
-                    type='number' 
+                    type='number'
                     value={currPage}
                     onChange={(e) => setCurrentPage(e.target.value)}
                     cursor='pointer'
-                    />
+                />
+                <Center 
+                    h='40px'
+                    w='40px'
+                    bgColor='textDistact'
+                    borderRadius='20px'
+                    ml='3px'>
+                    {Pages}
+                </Center>
             </Center>
             <Button onClick={nextPage}><GrFormNext size='1.5em' /></Button>
         </Box>

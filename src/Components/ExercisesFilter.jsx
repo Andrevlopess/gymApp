@@ -12,9 +12,9 @@ import {
 import { useContext } from 'react'
 import { FilterContext } from '../Contexts/FilterContext'
 
-const ExercisesFilter = () => {
+const ExercisesFilter = ({searched}) => {
 
-    const { bodyParts, equipments, targets } = useContext(FilterContext)
+    const { bodyParts, equipments, targets, handleSearchExercises } = useContext(FilterContext)
 
     return (
         <Box w='26vw' bgColor='layoutBg' m='30px' borderRadius='20px' py='20px' >
@@ -31,9 +31,13 @@ const ExercisesFilter = () => {
                     </h2>
                     <AccordionPanel pb={4}>
                         {equipments ?
-                            equipments.map((equip) => {
+                            equipments.map((equip, index) => {
                                 return (
-                                    <Button colorScheme='teal' variant='outline' size='sm' m='2px'>
+                                    <Button
+                                        colorScheme='teal' variant='outline'
+                                        size='sm' m='2px' key={index}
+                                        onClick={() => handleSearchExercises(equip, searched)}
+                                    >
                                         {equip}
                                     </Button>
                                 )
@@ -55,9 +59,12 @@ const ExercisesFilter = () => {
                     </h2>
                     <AccordionPanel pb={4}>
                         {bodyParts ?
-                            bodyParts.map((bodypart) => {
+                            bodyParts.map((bodypart, index) => {
                                 return (
-                                    <Button colorScheme='teal' variant='outline' size='sm' m='2px'>
+                                    <Button colorScheme='teal' variant='outline'
+                                        size='sm' m='2px' key={index}
+                                        onClick={() => handleSearchExercises(bodypart)}
+                                    >
                                         {bodypart}
                                     </Button>
                                 )
@@ -78,9 +85,13 @@ const ExercisesFilter = () => {
                     </h2>
                     <AccordionPanel pb={4}>
                         {targets ?
-                            targets.map((target) => {
+                            targets.map((target, index) => {
                                 return (
-                                    <Button colorScheme='teal' variant='outline' size='sm' m='2px'>
+                                    <Button colorScheme='teal' variant='outline'
+                                        size='sm' m='2px' key={index}
+                                        onClick={() => handleSearchExercises(target)}
+
+                                    >
                                         {target}
                                     </Button>
                                 )
@@ -91,7 +102,7 @@ const ExercisesFilter = () => {
                     </AccordionPanel>
                 </AccordionItem>
             </Accordion>
-        </Box>
+        </Box >
 
     )
 }

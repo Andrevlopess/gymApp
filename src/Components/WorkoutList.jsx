@@ -26,7 +26,7 @@ const WorkoutList = () => {
                     }
                 </TabList>
                 <TabPanels>
-                    {
+                    { 
                         personalWorkout?.map((target) => {
                             return (
                                 <TabPanel key={target.id}>
@@ -34,6 +34,7 @@ const WorkoutList = () => {
                                 </TabPanel>
                             )
                         })
+                        
                     }
                 </TabPanels>
             </Tabs>
