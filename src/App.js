@@ -12,6 +12,7 @@ import AboutUs from './Pages/AboutUs';
 import ExercicesExemples from './Pages/ExercicesExemples';
 import FilterProvider from './Contexts/FilterContext';
 import NewWorkout from './Pages/NewWorkout';
+import NewWorkoutProvider, { NewWorkoutContext } from './Contexts/NewWorkoutContext';
 
 
 function App() {
@@ -21,15 +22,17 @@ function App() {
       <ChakraProvider theme={originTheme}>
         <ExercisesProvider>
           <FilterProvider>
-            <Header />
-            <Routes>
-              <Route path='/' element={<Home />}></Route>
-              <Route path='/workoutplan' element={<WorkoutPlan />}></Route>
-              <Route path='/gymPage' element={<GymPage />}></Route>
-              <Route path='/newWorkout' element={<NewWorkout />}></Route>
-              <Route path='/aboutUs' element={<AboutUs />}></Route>
-              <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
-            </Routes>
+            <NewWorkoutProvider>
+              <Header />
+              <Routes>
+                <Route path='/' element={<Home />}></Route>
+                <Route path='/workoutplan' element={<WorkoutPlan />}></Route>
+                <Route path='/gymPage' element={<GymPage />}></Route>
+                <Route path='/newWorkout' element={<NewWorkout />}></Route>
+                <Route path='/aboutUs' element={<AboutUs />}></Route>
+                <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
+              </Routes>
+            </NewWorkoutProvider>
           </FilterProvider>
         </ExercisesProvider>
       </ChakraProvider>

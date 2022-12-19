@@ -105,7 +105,8 @@ export const ExercisesProvider = ({ children }) => {
         // .then(json => setLowerArmsEx(json))
         // .catch(err => console.log(err));
 
-       
+       // * http://localhost:5000/exercises?&_limit=200
+
         fetch(('http://localhost:5000/exercises?&_limit=200'), {
             method: 'GET',
             headers:{
