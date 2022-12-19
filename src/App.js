@@ -13,6 +13,7 @@ import ExercicesExemples from './Pages/ExercicesExemples';
 import FilterProvider from './Contexts/FilterContext';
 import NewWorkout from './Pages/NewWorkout';
 import NewWorkoutProvider, { NewWorkoutContext } from './Contexts/NewWorkoutContext';
+import Footer from './Layout/Footer';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                 <Route path='/aboutUs' element={<AboutUs />}></Route>
                 <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
               </Routes>
+              <Footer/>
             </NewWorkoutProvider>
           </FilterProvider>
         </ExercisesProvider>

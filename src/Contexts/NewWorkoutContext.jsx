@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 
@@ -21,6 +22,9 @@ function NewWorkoutProvider({children}){
         setDescription(desc)
     }
     console.log(workoutTitle, description);
+    console.log(exTable);
+
+
 
     return(
         <NewWorkoutContext.Provider value={{
