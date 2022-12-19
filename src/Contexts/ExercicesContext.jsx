@@ -106,7 +106,7 @@ export const ExercisesProvider = ({ children }) => {
         // .catch(err => console.log(err));
 
        
-        fetch(('http://localhost:5000/exercises?&_limit=70'), {
+        fetch(('http://localhost:5000/exercises?&_limit=200'), {
             method: 'GET',
             headers:{
                 'content-type': 'application/json'

@@ -12,8 +12,11 @@ function FilterProvider({ children }) {
     const [equipments, setEquipments] = useState([])
     const [bodyParts, setBodyParts] = useState([])
     const [targets, setTargets] = useState([])
-    const [filterName, setFilterName] = useState('')
+    const [filterName, setFilterName] = useState([])
     const [filter, setFilter] = useState()
+    const [searchedEx, setSearchedEx] = useState('')
+    const [search, setSearch] = useState('')
+    const [title, setTitle] = useState('')
 
     useEffect(() => {
         setBodyParts([
@@ -71,7 +74,7 @@ function FilterProvider({ children }) {
 
     }, [])
 
-    function handleSearchExercises(filter, searched) {
+    function handleFilterExercises(filter, searched) {
         if (filter) {
             const searchExercises = searched ?
                 searched.filter((item) =>
@@ -85,14 +88,39 @@ function FilterProvider({ children }) {
                     || item.target.toLowerCase().includes(filter.toLowerCase())
                     || item.equipment.toLowerCase().includes(filter.toLowerCase())
                     || item.bodyPart.toLowerCase().includes(filter.toLowerCase()),)
+                
 
-            setFilter(searchExercises)
-            setFilterName([...filterName], filter)
+            setSearchedEx(searchExercises)
+            setFilterName([...filterName, filter])
             
-
         }
     }
-    console.log(filterName);
+
+    function handleSearchExercises() {
+        if (search) {
+            const searchExercises = allExercises.filter((item) =>
+                item.name.toLowerCase().includes(search.toLowerCase())
+                || item.target.toLowerCase().includes(search.toLowerCase())
+                || item.equipment.toLowerCase().includes(search.toLowerCase())
+                || item.bodyPart.toLowerCase().includes(search.toLowerCase()),)
+
+
+            if (searchExercises) {
+                setTitle(search)
+                setSearch('')
+                setSearchedEx(searchExercises)
+            } else {
+                alert('erro')
+            }
+        }
+    }
+
+    function removeFilter(params) {
+        setFilter('')
+        setFilterName('')
+    }
+
+
 
 
     return (
@@ -100,9 +128,15 @@ function FilterProvider({ children }) {
             bodyParts,
             targets,
             equipments,
-            handleSearchExercises,
+            handleFilterExercises,
             filter,
-         filterName
+            filterName,
+            searchedEx, 
+            setSearch,
+            handleSearchExercises,
+            search,
+            title,
+            removeFilter
         }}>
             {children}
         </FilterContext.Provider>

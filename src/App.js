@@ -11,6 +11,7 @@ import GymPage from './Pages/GymPage';
 import AboutUs from './Pages/AboutUs';
 import ExercicesExemples from './Pages/ExercicesExemples';
 import FilterProvider from './Contexts/FilterContext';
+import NewWorkout from './Pages/NewWorkout';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Route path='/' element={<Home />}></Route>
               <Route path='/workoutplan' element={<WorkoutPlan />}></Route>
               <Route path='/gymPage' element={<GymPage />}></Route>
+              <Route path='/newWorkout' element={<NewWorkout />}></Route>
               <Route path='/aboutUs' element={<AboutUs />}></Route>
               <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
             </Routes>

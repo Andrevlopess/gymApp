@@ -33,7 +33,7 @@ const WorkoutPlan = () => {
                         <Link to="/exercisesExamples">More exercises</Link>
                     </Button>
                     <Button colorScheme='teal' variant='outline' borderRadius='40px'>
-                        Change my Workout
+                    <Link to="/newWorkout">New workout</Link>
                     </Button>
                 </Box>
             </Box>

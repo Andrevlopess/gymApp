@@ -14,7 +14,7 @@ import { FilterContext } from '../Contexts/FilterContext'
 
 const ExercisesFilter = ({searched}) => {
 
-    const { bodyParts, equipments, targets, handleSearchExercises } = useContext(FilterContext)
+    const { bodyParts, equipments, targets, handleFilterExercises, searchedEx } = useContext(FilterContext)
 
     return (
         <Box w='26vw' bgColor='layoutBg' m='30px' borderRadius='20px' py='20px' >
@@ -36,7 +36,7 @@ const ExercisesFilter = ({searched}) => {
                                     <Button
                                         colorScheme='teal' variant='outline'
                                         size='sm' m='2px' key={index}
-                                        onClick={() => handleSearchExercises(equip, searched)}
+                                        onClick={() => handleFilterExercises(equip, searchedEx)}
                                     >
                                         {equip}
                                     </Button>
@@ -63,7 +63,7 @@ const ExercisesFilter = ({searched}) => {
                                 return (
                                     <Button colorScheme='teal' variant='outline'
                                         size='sm' m='2px' key={index}
-                                        onClick={() => handleSearchExercises(bodypart)}
+                                        onClick={() => handleFilterExercises(bodypart)}
                                     >
                                         {bodypart}
                                     </Button>
@@ -89,7 +89,7 @@ const ExercisesFilter = ({searched}) => {
                                 return (
                                     <Button colorScheme='teal' variant='outline'
                                         size='sm' m='2px' key={index}
-                                        onClick={() => handleSearchExercises(target)}
+                                        onClick={() => handleFilterExercises(target)}
 
                                     >
                                         {target}
