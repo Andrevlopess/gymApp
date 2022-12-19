@@ -13,13 +13,20 @@ function NewWorkoutProvider({children}){
     const addExTable = (ex) => {
         setExTable([...exTable, ex])
     }
-    console.log(exTable);
+    const changeTitle= (title) => {
+        setWorkoutTitle(title)
+    }
+
+    const changeDescription= (desc) => {
+        setDescription(desc)
+    }
+    console.log(workoutTitle, description);
 
     return(
         <NewWorkoutContext.Provider value={{
             addExTable,
-            setWorkoutTitle,
-            setDescription,
+            changeTitle,
+            changeDescription,
             exTable
         }}>
             {children}

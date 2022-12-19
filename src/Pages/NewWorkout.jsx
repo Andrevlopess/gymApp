@@ -34,7 +34,7 @@ import { NewWorkoutContext } from '../Contexts/NewWorkoutContext'
 
 const NewWorkout = () => {
 
-    const { exTable } = useContext(NewWorkoutContext)
+    const { exTable, changeTitle, changeDescription } = useContext(NewWorkoutContext)
 
     const OverlayOne = () => (
         <ModalOverlay
@@ -69,11 +69,12 @@ const NewWorkout = () => {
                         <FormControl isRequired display='flex' justifyContent='space-evenly' flexWrap='wrap'>
                             <InputGroup w='40%' minW='300px' my='10px'>
                                 <InputLeftAddon children='Workout Name' />
-                                <Input placeholder='Ex. chest' color='textContrast' isRequired/>
+                                <Input placeholder='Ex. chest' color='textContrast' isRequired
+                                 onChange={(e) => changeTitle(e.target.value)}/>
                             </InputGroup>
                             <InputGroup w='50%' minW='300px' my='10px'>
                                 <InputLeftAddon children='Description' />
-                                <Input color='textContrast' />
+                                <Input color='textContrast' onChange={(e) => changeDescription(e.target.value)} />
                             </InputGroup>
 
 
