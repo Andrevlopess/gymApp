@@ -8,6 +8,8 @@ import { ExercisesContext } from '../Contexts/ExercicesContext'
 const WorkoutPlan = () => {
 
     const { personalWorkout } = useContext(ExercisesContext)
+    
+
 
     return (
         <Container
@@ -21,11 +23,12 @@ const WorkoutPlan = () => {
                 justifyContent='space-between'
                 alignItems='center'
                 flexWrap='wrap'
-                my='40px'
                 mx='10px'>
                 <Heading as='h1' size='3xl' color='lightBlue' display='flex' alignItems='flex-end'>
                     My Workouts
-                    <Text fontSize='.6em' color='grey' ml='10px'>{`(${personalWorkout.length})`}</Text>
+                    <Text fontSize='.6em' color='grey' ml='10px'>
+                        {personalWorkout &&`(${personalWorkout.length})`}
+                        </Text>
                 </Heading>
 
                 <Box display='flex' flexWrap='wrap' alignItems='center' my='40px'>
@@ -33,12 +36,20 @@ const WorkoutPlan = () => {
                         <Link to="/exercisesExamples">More exercises</Link>
                     </Button>
                     <Button colorScheme='teal' variant='outline' borderRadius='40px'>
-                    <Link to="/newWorkout">New workout</Link>
+                        <Link to="/newWorkout">New workout</Link>
                     </Button>
                 </Box>
             </Box>
 
-            <WorkoutList />
+            {personalWorkout ?
+
+                <WorkoutList personalWorkout={personalWorkout} />
+                : 
+                <Box w='100%'>
+                    <Heading as='h1' size='2xl' color='textDistact' my='100px' textAlign='center'>You still dont have workouts</Heading>
+                </Box>
+            }
+
 
         </Container>
     )

@@ -21,9 +21,9 @@ function App() {
   return (
     <Router>
       <ChakraProvider theme={originTheme}>
-        <ExercisesProvider>
-          <FilterProvider>
-            <NewWorkoutProvider>
+        <NewWorkoutProvider>
+          <ExercisesProvider>
+            <FilterProvider>
               <Header />
               <Routes>
                 <Route path='/' element={<Home />}></Route>
@@ -33,10 +33,10 @@ function App() {
                 <Route path='/aboutUs' element={<AboutUs />}></Route>
                 <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
               </Routes>
-              <Footer/>
-            </NewWorkoutProvider>
-          </FilterProvider>
-        </ExercisesProvider>
+              <Footer />
+            </FilterProvider>
+          </ExercisesProvider>
+        </NewWorkoutProvider>
       </ChakraProvider>
     </Router>
   );

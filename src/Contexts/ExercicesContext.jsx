@@ -1,11 +1,14 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
+import { NewWorkoutContext } from "./NewWorkoutContext";
 
 export const ExercisesContext = createContext()
 
 
 export const ExercisesProvider = ({ children }) => {
+
+    const { workout } = useContext(NewWorkoutContext)
 
     const [backEx, setBackEx] = useState([])
     const [chestEx, setChestEx] = useState([])
@@ -15,9 +18,9 @@ export const ExercisesProvider = ({ children }) => {
     const [lowerArmsEx, setLowerArmsEx] = useState([])
     const [lowerLegsEx, setLowerLegsEx] = useState([])
     const [allExercises, setAllExercises] = useState([])
+    const [personalWorkout, setPersonalWorkout] = useState([])
 
     useEffect(() => {
-
 
         // // * GET ALL SHOULDERS EXERCISES
 
@@ -105,39 +108,28 @@ export const ExercisesProvider = ({ children }) => {
         // .then(json => setLowerArmsEx(json))
         // .catch(err => console.log(err));
 
-       // * http://localhost:5000/exercises?&_limit=200
+        // * http://localhost:5000/exercises?&_limit=200
 
         fetch(('http://localhost:5000/exercises?&_limit=200'), {
             method: 'GET',
-            headers:{
+            headers: {
                 'content-type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(json => setAllExercises(json))
-        .catch(err => console.log(err));
+            .then(res => res.json())
+            .then(json => setAllExercises(json))
+            .catch(err => console.log(err));
 
     }, [])
- 
 
-    const personalWorkout = [
-        {
-            title: 'Chest',
-            exercises: chestEx,
-        },
-        {
-            title: 'Back',
-            exercises: backEx,
-        },
-        {
-            title: 'Upper Arms',
-            exercises: upperArmsEx,
-        },
-        {
-            title: 'Upper Legs',
-            exercises: upperLegsEx,
-        }
-    ]
+    useEffect(()=>{
+        const data = JSON.parse(localStorage.getItem('workouts'))
+
+       setPersonalWorkout(data)
+
+    },[workout])
+
+
 
 
     return (

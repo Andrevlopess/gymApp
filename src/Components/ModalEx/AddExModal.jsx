@@ -29,6 +29,7 @@ const AddExModal = ({ isOpen, onClose, overlay }) => {
     const [search, setSearch] = useState()
     const [searchEx, setSearchEx] = useState()
 
+
     function funcSearchExercises() {
 
         if (search) {
@@ -53,7 +54,7 @@ const AddExModal = ({ isOpen, onClose, overlay }) => {
                     <InputGroup my='10px'>
                         <Input
                             variant='outlined'
-                            placeholder='Search for exercise'
+                            placeholder='Ex. "barbell bench press"'
                             w="100%"
                             bgColor='textContrast'
 
@@ -73,11 +74,9 @@ const AddExModal = ({ isOpen, onClose, overlay }) => {
                     {searchEx ?
                         searchEx.map((ex) => {
                             return <AddExCard exercise={ex} close={onClose} key={ex.id} />
-                              
-                        })
-                        :
-                        <h3 style={{textAlign:'center'}}>Not found!</h3>
 
+                        })
+                        :  <h3 style={{ textAlign: 'center' }}>Search for an Exercise</h3>
                     }
                 </ModalBody>
                 <ModalFooter>

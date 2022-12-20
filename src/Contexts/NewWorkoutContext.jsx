@@ -1,37 +1,79 @@
+import { useNavigate } from 'react-router-dom'
 import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 
 export const NewWorkoutContext = createContext()
 
-function NewWorkoutProvider({children}){
+function NewWorkoutProvider({ children }) {
 
     const [exTable, setExTable] = useState([])
     const [workoutTitle, setWorkoutTitle] = useState()
     const [description, setDescription] = useState()
+    const [workout, setWorkout] = useState()
 
+    const navigate = useNavigate()
+
+
+    const getWorkouts = () => {
+        const workouts = JSON.parse(localStorage.getItem('workouts') || '[]')
+
+        return workouts
+    }
+
+    
+
+    const createWorkout = (workout) => {
+
+        console.log(workout);
+
+        const datas = getWorkouts()
+
+        datas.push(
+            {
+                title: workoutTitle,
+                description: description,
+                id: datas.length + 1,
+                workout: workout
+            }
+            )
+
+        
+        localStorage.setItem('workouts', JSON.stringify(datas))
+        setWorkout(workout)
+        setExTable([])
+        navigate('/workoutPlan')
+
+    }
 
     const addExTable = (ex) => {
         setExTable([...exTable, ex])
     }
-    const changeTitle= (title) => {
+
+    const removeExTable = (ex) => {
+        setExTable(exTable.filter(item => item.id !== ex.id))
+    }
+
+    const changeTitle = (title) => {
         setWorkoutTitle(title)
     }
 
-    const changeDescription= (desc) => {
+    const changeDescription = (desc) => {
         setDescription(desc)
     }
-    console.log(workoutTitle, description);
-    console.log(exTable);
 
 
 
-    return(
+    return (
         <NewWorkoutContext.Provider value={{
             addExTable,
             changeTitle,
             changeDescription,
-            exTable
+            createWorkout,
+            removeExTable,
+            workoutTitle,
+            exTable,
+            workout
         }}>
             {children}
         </NewWorkoutContext.Provider>

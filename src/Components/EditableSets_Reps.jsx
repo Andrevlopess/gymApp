@@ -9,13 +9,15 @@ import {
     Flex,
     Input,
 } from '@chakra-ui/react'
+import { useContext } from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { BiCheck, BiX } from 'react-icons/bi'
 import { FiEdit } from 'react-icons/fi'
+import { NewWorkoutContext } from '../Contexts/NewWorkoutContext'
 
-function RepsAndSets() {
+function RepsAndSets({ex, index}) {
 
-    const [reps, setReps] = useState()
 
 
     function EditableControls() {
@@ -65,7 +67,7 @@ function RepsAndSets() {
                     w='100px'
                     mx='10px' 
                     maxLength={6}
-                    onChange={(e) => setReps(e.target.value)}/>
+                    onChange={(e) => ex.sets_reps = e.target.value}/>
                 <EditableControls/>
             </Flex>
 

@@ -18,24 +18,23 @@ import {
     ModalOverlay,
     Button,
     Image,
-    NumberInput,
-    Stack,
-    NumberInputField,
-    HStack,
-
 } from '@chakra-ui/react'
 import React from 'react'
 import { useContext } from 'react'
-
+import { BsTrash } from 'react-icons/bs'
 import { HiOutlinePlus } from 'react-icons/hi'
-import { CgLoadbar } from 'react-icons/cg'
 import AddExModal from '../Components/ModalEx/AddExModal'
 import { NewWorkoutContext } from '../Contexts/NewWorkoutContext'
 import RepsAndSets from '../Components/EditableSets_Reps'
 
 const NewWorkout = () => {
 
-    const { exTable, changeTitle, changeDescription } = useContext(NewWorkoutContext)
+    const { exTable,
+        changeTitle,
+        changeDescription,
+        createWorkout,
+        workoutTitle,
+        removeExTable } = useContext(NewWorkoutContext)
 
     const OverlayOne = () => (
         <ModalOverlay
@@ -47,6 +46,13 @@ const NewWorkout = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [overlay, setOverlay] = React.useState(<OverlayOne />)
 
+    function handleCreateWorkout() {
+
+        if (exTable.length > 0 && workoutTitle) {
+            createWorkout(exTable)
+        }
+
+    }
 
 
     return (
@@ -56,13 +62,19 @@ const NewWorkout = () => {
             maxW='none'
         >
             <Box w='100%' display='flex' justifyContent='center' flexDirection='column' pb='40px' >
-
                 <Box w='100%' display='flex' justifyContent='space-between' alignItems='center' px='20px' my='15px' flexWrap='wrap'>
                     <Heading as='h1' size='3xl' color='lightBlue' my='25px'>
                         New Workout
                     </Heading>
-                    <Button bgColor='layoutBg' color='textDistact' py='35px' px='40px'
-                        w='100%' maxW='400px'>Create</Button>
+                    <Button
+                        bgColor='layoutBg'
+                        color='textDistact'
+                        py='35px'
+                        px='40px'
+                        w='100%'
+                        maxW='400px'
+                        mx='10px'
+                        onClick={handleCreateWorkout}>Create</Button>
                 </Box>
 
                 <Box border='1px' borderColor='textContrast' py='30px' px='20px' borderRadius='15px'>
@@ -78,8 +90,6 @@ const NewWorkout = () => {
                                 <InputLeftAddon children='Description' />
                                 <Input color='textContrast' onChange={(e) => changeDescription(e.target.value)} />
                             </InputGroup>
-
-
                         </FormControl>
                     </Box>
                     <Box my='30px' display='flex' flexDirection='column' justifyContent='center'>
@@ -93,6 +103,7 @@ const NewWorkout = () => {
                                         <Th color='textDistact'>Target</Th>
                                         <Th color='textDistact'>Sets/Reps</Th>
                                         <Th color='textDistact'>Example</Th>
+                                        <Th color='textDistact'></Th>
                                     </Tr>
                                 </Thead>
                                 <Tbody color='textContrast'>
@@ -103,9 +114,13 @@ const NewWorkout = () => {
                                                     <Td>{exercise.name}</Td>
                                                     <Td>{exercise.target}</Td>
                                                     <Td>
-                                                        <RepsAndSets />
+                                                        <RepsAndSets ex={exercise} index={exercise.id} />
                                                     </Td>
                                                     <Td><Image src={exercise.gifUrl} boxSize="100px" minW='100px' /></Td>
+                                                    <Td><BsTrash
+                                                        size={25}
+                                                        color='#E53E3E'
+                                                        onClick={() => removeExTable(exercise)} /></Td>
                                                 </Tr>
                                             )
                                         })

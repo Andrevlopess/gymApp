@@ -1,29 +1,24 @@
-import { Box, Button, Container, HStack, Show, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Container, HStack, Image, Show, Text, useDisclosure } from '@chakra-ui/react'
 import React from 'react'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import DrawerHome from '../Components/DrawerHome'
 import Drawer from '../Components/DrawerHome'
-
+import Logo from '../Icons/android-chrome-192x192.png'
 const Header = () => {
 
   return (
     <Container
       w="100%"
       maxWidth="100%"
-      h="100px"
+      h="15vh"
       display="flex"
       alignItems="center"
       justifyContent='space-between'
       bg="layoutBg">
 
-      <Text
-        fontFamily="'Inter', sans-serif"
-        fontSize='2em'
-        color='textDistact'
-        fontWeight='800'
-      >
-        <Link to="/">Gym Nation</Link></Text>
+
+        <Link to="/"><Image src={Logo} boxSize='4em'/></Link>
 
       <Show breakpoint='(min-width: 500px)'>
 
