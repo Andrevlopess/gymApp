@@ -79,12 +79,14 @@ function FilterProvider({ children }) {
             const searchExercises = searched ?
                 searched.filter((item) =>
                     item.name.toLowerCase().includes(filter.toLowerCase())
+                    || item.id.includes(filter)
                     || item.target.toLowerCase().includes(filter.toLowerCase())
                     || item.equipment.toLowerCase().includes(filter.toLowerCase())
                     || item.bodyPart.toLowerCase().includes(filter.toLowerCase()),)
                 :
                 allExercises.filter((item) =>
                     item.name.toLowerCase().includes(filter.toLowerCase())
+                    || item.id.includes(filter)
                     || item.target.toLowerCase().includes(filter.toLowerCase())
                     || item.equipment.toLowerCase().includes(filter.toLowerCase())
                     || item.bodyPart.toLowerCase().includes(filter.toLowerCase()),)

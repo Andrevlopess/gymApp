@@ -19,6 +19,8 @@ export const ExercisesProvider = ({ children }) => {
     const [lowerLegsEx, setLowerLegsEx] = useState([])
     const [allExercises, setAllExercises] = useState([])
     const [personalWorkout, setPersonalWorkout] = useState([])
+    const [control, setControl] = useState()
+
 
     useEffect(() => {
 
@@ -2913,9 +2915,20 @@ export const ExercisesProvider = ({ children }) => {
 
        setPersonalWorkout(data)
 
-    },[workout])
+    },[workout, control])
 
+    const getWorkouts = () => {
+        const workouts = JSON.parse(localStorage.getItem('workouts') || '[]')
 
+        return workouts
+    }
+
+    function deleteWorkout(ex){
+        const data = getWorkouts().filter((exercise) => exercise.id !== ex.id)
+        localStorage.setItem('workouts', JSON.stringify(data))
+
+        setControl(data)
+    }
 
 
     return (
@@ -2928,6 +2941,7 @@ export const ExercisesProvider = ({ children }) => {
             upperLegsEx,
             upperArmsEx,
             personalWorkout,
+            deleteWorkout,
             allExercises
         }}>
             {children}

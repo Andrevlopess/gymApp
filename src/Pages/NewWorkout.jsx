@@ -63,7 +63,7 @@ const NewWorkout = () => {
         >
             <Box w='100%' display='flex' justifyContent='center' flexDirection='column' pb='40px' >
                 <Box w='100%' display='flex' justifyContent='space-between' alignItems='center' px='20px' my='15px' flexWrap='wrap'>
-                    <Heading as='h1' size='3xl' color='lightBlue' my='25px'>
+                    <Heading as='h1' size='3xl' color='textDistact' fontWeight='800' my='25px'>
                         New Workout
                     </Heading>
                     <Button

@@ -16,9 +16,26 @@ import {
     Skeleton,
     Container,
     Box,
+    useDisclosure,
+    ModalOverlay,
 } from '@chakra-ui/react'
+import DetailsModal from './ModalEx/DetailsModal'
+import { useState } from 'react'
 
 const WorkoutTable = ({ target }) => {
+
+    const [currentModalEx, setCurrentModalEx] = useState()
+
+    const OverlayOne = () => (
+        <ModalOverlay
+            bg='blackAlpha.300'
+            backdropFilter='blur(10px) hue-rotate(30deg)'
+        />
+    )
+
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [overlay, setOverlay] = React.useState(<OverlayOne />)
 
 
     return (
@@ -51,11 +68,17 @@ const WorkoutTable = ({ target }) => {
                                         <Checkbox size='lg'></Checkbox>
                                     </Td>
                                     <Td>
-                                        <Button colorScheme='teal' variant='ghost'>
+                                        <Button colorScheme='teal' variant='ghost'
+                                        onClick={() => {
+                                            setOverlay(<OverlayOne />)
+                                            onOpen()
+                                            setCurrentModalEx(ex)
+                                        }}>
                                             Details
                                         </Button>
                                     </Td>
                                 </Tr>
+                                
                             )
                         })
                         :
@@ -63,7 +86,9 @@ const WorkoutTable = ({ target }) => {
                     }
                 </Tbody>
             </Table>
+             <DetailsModal isOpen={isOpen} onClose={onClose} overlay={overlay} exercise={currentModalEx}/>
         </TableContainer>
+
     )
 }
 
