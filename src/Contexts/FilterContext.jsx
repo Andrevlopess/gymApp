@@ -9,70 +9,11 @@ function FilterProvider({ children }) {
 
     const { allExercises } = useContext(ExercisesContext)
 
-    const [equipments, setEquipments] = useState([])
-    const [bodyParts, setBodyParts] = useState([])
-    const [targets, setTargets] = useState([])
     const [filterName, setFilterName] = useState([])
     const [filter, setFilter] = useState()
     const [searchedEx, setSearchedEx] = useState('')
     const [search, setSearch] = useState('')
     const [title, setTitle] = useState('')
-
-    useEffect(() => {
-        setBodyParts([
-            "back",
-            "cardio",
-            "chest",
-            "lower arms",
-            "lower legs",
-            "neck",
-            "shoulders",
-            "upper arms",
-            "upper legs",
-            "waist"
-        ])
-
-        setEquipments([
-            "assisted",
-            "band",
-            "barbell",
-            "body weight",
-            "bosu ball",
-            "cable",
-            "dumbbell",
-            "roller",
-            "elliptical machine",
-            "ez barbell",
-            "hammer",
-            "kettlebell",
-            "medicine ball",
-            "leverage machine",
-            "olympic barbell",
-            "resistance band"
-        ])
-        setTargets([
-            "abductors",
-            "abs",
-            "adductors",
-            "biceps",
-            "calves",
-            "upper back",
-            "cardiovascular system",
-            "delts",
-            "forearms",
-            "glutes",
-            "hamstrings",
-            "lats",
-            "levator scapulae",
-            "pectorals",
-            "quads",
-            "serratus anterior",
-            "spine",
-            "traps",
-            "triceps",
-        ])
-
-    }, [])
 
 
     function handleSearchExercises() {
@@ -86,27 +27,29 @@ function FilterProvider({ children }) {
 
 
             if (searchExercises) {
-                setTitle(searchExercises[0].bodyPart)
-                setSearch('')
+                setTitle(search)
+                setSearch(search)
                 setSearchedEx(searchExercises)
             }
         }
     }
 
+    function removeSearch(){
+        setSearchedEx('')
+        setSearch('')
+    }
 
 
 
 
     return (
         <FilterContext.Provider value={{
-            bodyParts,
-            targets,
-            equipments,
             filter,
             filterName,
             searchedEx, 
             setSearch,
             handleSearchExercises,
+            removeSearch,
             search,
             title,
         }}>

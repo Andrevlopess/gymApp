@@ -5,11 +5,11 @@ import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 const Pagination = ({ setCurrentPage, currPage, totalEx, exPerPage }) => {
 
     const Pages = Math.ceil(totalEx / exPerPage)
-    
-    
+
+
     const nextPage = () => {
-        if(currPage < Pages){
-            setCurrentPage(currPage + 1)
+        if (currPage < Pages) {
+            setCurrentPage(currPage++)
         }
     }
 
@@ -20,7 +20,7 @@ const Pagination = ({ setCurrentPage, currPage, totalEx, exPerPage }) => {
     }
 
     return (
-        <Box display='flex' justifyContent='space-between' pb='30px' alignItems='center'>
+        <Box display='flex' justifyContent='space-between' alignItems='center'>
 
             <Button onClick={previousPage}><GrFormPrevious size='1.5em' /></Button>
             <Center
@@ -37,10 +37,12 @@ const Pagination = ({ setCurrentPage, currPage, totalEx, exPerPage }) => {
                     borderRadius='20px'
                     type='number'
                     value={currPage}
-                    onChange={(e) => setCurrentPage(e.target.value)}
+                    onChange={(e) => {
+                        setCurrentPage(e.target.value)
+                    }}
                     cursor='pointer'
                 />
-                <Center 
+                <Center
                     h='40px'
                     w='40px'
                     bgColor='textDistact'

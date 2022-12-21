@@ -15,8 +15,6 @@ import {
 
 const DetailsModal = ({isOpen, onClose, overlay, exercise}) => {
 
-
-    console.log(exercise);
     return (
         <Modal isCentered isOpen={isOpen} onClose={onClose}>
             {overlay}

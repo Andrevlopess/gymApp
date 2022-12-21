@@ -1,4 +1,4 @@
-import { Avatar, Badge, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Highlight, Image, Text } from '@chakra-ui/react'
+import { Avatar, Badge, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Highlight, Image, Skeleton, Text } from '@chakra-ui/react'
 import React from 'react'
 import { body } from '../Icons/body.png'
 
@@ -13,7 +13,13 @@ const ExerciseCard = ({ exercise }) => {
         <CardBody>
 
         </CardBody>
-        <Image src={exercise.gifUrl} minW='100px' objectFit='cover' />
+        {exercise.gifUrl ?
+          <Image src={exercise.gifUrl} minW='100px' objectFit='cover' />
+           :
+           <Image minW='100px' objectFit='cover' src={'https://via.placeholder.com/150'}/>
+        }
+
+          
         <CardFooter display='flex' justifyContent='space-evenly' alignItems='center'>
           <Highlight
             query={exercise.equipment}
