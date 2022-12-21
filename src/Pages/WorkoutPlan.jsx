@@ -25,7 +25,7 @@ const WorkoutPlan = () => {
                 flexWrap='wrap'
                 mx='10px'>
 
-                <Heading as='h1' size='3xl' fontWeight='800' color='textDistact' display='flex' alignItems='flex-end'>
+                <Heading as='h1' size='3xl' fontWeight='800' color='textDistact' display='flex' alignItems='flex-end' mt='20px'>
                     My Workouts
                     <Text fontSize='.6em' color='grey' ml='10px'>
                         {personalWorkout && `(${personalWorkout.length})`}

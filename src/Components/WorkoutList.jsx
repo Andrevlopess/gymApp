@@ -29,6 +29,7 @@ const WorkoutList = ({ personalWorkout }) => {
         <Tabs
             variant='soft-rounded'
             colorScheme='facebook'
+            my='30px'
         >
             <Box w='100%' display='flex' justifyContent='space-between' alignItems='center'>
                 <TabList mx='20px' display='flex' overflowX='auto'>
