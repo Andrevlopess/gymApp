@@ -3,7 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { originTheme } from './Themes/OriginTheme';
 import { ExercisesProvider } from './Contexts/ExercicesContext';
 import Header from './Layout/Header';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './Pages/Home';
 import './App.css'
 import WorkoutPlan from './Pages/WorkoutPlan';
@@ -12,8 +12,9 @@ import AboutUs from './Pages/AboutUs';
 import ExercicesExemples from './Pages/ExercicesExemples';
 import FilterProvider from './Contexts/FilterContext';
 import NewWorkout from './Pages/NewWorkout';
-import NewWorkoutProvider, { NewWorkoutContext } from './Contexts/NewWorkoutContext';
+import NewWorkoutProvider from './Contexts/NewWorkoutContext';
 import Footer from './Layout/Footer';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <NewWorkoutProvider>
           <ExercisesProvider>
             <FilterProvider>
+            <Toaster/>
               <Header />
               <Routes>
                 <Route path='/' element={<Home />}></Route>

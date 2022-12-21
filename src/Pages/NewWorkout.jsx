@@ -26,6 +26,7 @@ import { HiOutlinePlus } from 'react-icons/hi'
 import AddExModal from '../Components/ModalEx/AddExModal'
 import { NewWorkoutContext } from '../Contexts/NewWorkoutContext'
 import RepsAndSets from '../Components/EditableSets_Reps'
+import { toast } from 'react-hot-toast'
 
 const NewWorkout = () => {
 
@@ -50,6 +51,9 @@ const NewWorkout = () => {
 
         if (exTable.length > 0 && workoutTitle) {
             createWorkout(exTable)
+            toast.success("Your new workout was saved!")
+        }else{
+            toast.error("Check your workout again!")
         }
 
     }
@@ -138,6 +142,7 @@ const NewWorkout = () => {
 
                             bg='none'
                             py='10px'
+                            my='30px'
                         >
                             <HiOutlinePlus size={40} color='#00ADB5' />
                         </Button>
