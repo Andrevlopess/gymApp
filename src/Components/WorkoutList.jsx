@@ -71,10 +71,6 @@ const WorkoutList = ({ personalWorkout }) => {
                                         colorScheme='teal'
                                     />
                                     <MenuList bgColor='layoutBg' border='none'>
-                                        <MenuItem bgColor='layoutBg' color='textContrast' icon={<FaRegEdit size={18} />} >
-                                            Edit
-                                        </MenuItem>
-                                        <MenuDivider color='grey' />
                                         <MenuItem bgColor='layoutBg' color='textContrast' icon={<HiTrash size={18} />}
                                             onClick={() => deleteWorkout(target)}
                                         >

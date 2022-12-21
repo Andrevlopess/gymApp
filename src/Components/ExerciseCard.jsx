@@ -5,7 +5,7 @@ import { body } from '../Icons/body.png'
 const ExerciseCard = ({ exercise }) => {
   return (
     <div>
-      <Card color='textDistact' boxShadow='2xl' border='1px' borderColor='gray.200'>
+      <Card color='textDistact' boxShadow='2xl' border='1px' borderColor='gray.200' maxW='400px'>
         <CardHeader display='flex' justifyContent='space-between' alignItems='flex-start'>
           <Heading size='md'>{exercise.name}</Heading>
           <Badge>{exercise.target}</Badge>

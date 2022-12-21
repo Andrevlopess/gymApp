@@ -33,9 +33,9 @@ const DrawerHome = () => {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent  bgColor='layoutBg' color='textContrast'>
           <DrawerCloseButton />
-          <DrawerHeader>Gym nation</DrawerHeader>
+          <DrawerHeader color='textDistact'>Gym nation</DrawerHeader>
 
 
           <DrawerBody>
@@ -49,12 +49,10 @@ const DrawerHome = () => {
               <Box >
                 <Link to="/workoutPlan">My workout</Link>
               </Box>
-              <Box>
-                <Link to="/gymPage">The gym</Link>
+              <Box >
+                <Link to="/exercicesExamples">Exercises</Link>
               </Box>
-              <Box>
-                <Link to="/aboutUs">About us</Link>
-              </Box>
+              
             </VStack>
 
           </DrawerBody>

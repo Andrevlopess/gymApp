@@ -60,6 +60,7 @@ const NewWorkout = () => {
             bgColor='compBg'
             w='100%'
             maxW='none'
+            minH='80vh'
         >
             <Box w='100%' display='flex' justifyContent='center' flexDirection='column' pb='40px' >
                 <Box w='100%' display='flex' justifyContent='space-between' alignItems='center' px='20px' my='15px' flexWrap='wrap'>

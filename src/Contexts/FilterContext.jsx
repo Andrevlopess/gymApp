@@ -74,53 +74,25 @@ function FilterProvider({ children }) {
 
     }, [])
 
-    function handleFilterExercises(filter, searched) {
-        if (filter) {
-            const searchExercises = searched ?
-                searched.filter((item) =>
-                    item.name.toLowerCase().includes(filter.toLowerCase())
-                    || item.id.includes(filter)
-                    || item.target.toLowerCase().includes(filter.toLowerCase())
-                    || item.equipment.toLowerCase().includes(filter.toLowerCase())
-                    || item.bodyPart.toLowerCase().includes(filter.toLowerCase()),)
-                :
-                allExercises.filter((item) =>
-                    item.name.toLowerCase().includes(filter.toLowerCase())
-                    || item.id.includes(filter)
-                    || item.target.toLowerCase().includes(filter.toLowerCase())
-                    || item.equipment.toLowerCase().includes(filter.toLowerCase())
-                    || item.bodyPart.toLowerCase().includes(filter.toLowerCase()),)
-                
-
-            setSearchedEx(searchExercises)
-            setFilterName([...filterName, filter])
-            
-        }
-    }
 
     function handleSearchExercises() {
         if (search) {
             const searchExercises = allExercises.filter((item) =>
-                item.name.toLowerCase().includes(search.toLowerCase())
+            item.name.toLowerCase().includes(search.toLowerCase())
+                || item.id.includes(search)
                 || item.target.toLowerCase().includes(search.toLowerCase())
                 || item.equipment.toLowerCase().includes(search.toLowerCase())
                 || item.bodyPart.toLowerCase().includes(search.toLowerCase()),)
 
 
             if (searchExercises) {
-                setTitle(search)
+                setTitle(searchExercises[0].bodyPart)
                 setSearch('')
                 setSearchedEx(searchExercises)
-            } else {
-                alert('erro')
             }
         }
     }
 
-    function removeFilter(params) {
-        setFilter('')
-        setFilterName('')
-    }
 
 
 
@@ -130,7 +102,6 @@ function FilterProvider({ children }) {
             bodyParts,
             targets,
             equipments,
-            handleFilterExercises,
             filter,
             filterName,
             searchedEx, 
@@ -138,7 +109,6 @@ function FilterProvider({ children }) {
             handleSearchExercises,
             search,
             title,
-            removeFilter
         }}>
             {children}
         </FilterContext.Provider>

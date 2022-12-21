@@ -15,14 +15,15 @@ const Header = () => {
       display="flex"
       alignItems="center"
       justifyContent='space-between'
-      bg="layoutBg">
+      bg="layoutBg"
+      px='30px'>
 
 
         <Link to="/"><Image src={Logo} boxSize='4em'/></Link>
 
       <Show breakpoint='(min-width: 500px)'>
 
-        <HStack spacing='1em' color='textContrast'>
+        <HStack spacing='1em' color='textContrast' fontWeight={800}>
           <Box >
             <Link to="/workoutPlan">My Workout</Link>
           </Box>

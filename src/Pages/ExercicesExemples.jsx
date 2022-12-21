@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, IconButton, Input, InputGroup, InputRightElement, Show, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, IconButton, Input, InputGroup, InputRightElement, Show, SimpleGrid, Spacer, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { HiOutlineSearch } from 'react-icons/hi'
@@ -13,30 +13,30 @@ const ExercicesExemples = () => {
 
     const { allExercises } = useContext(ExercisesContext)
 
-    const { filter,
-        filterName,
+    const {
         setSearch,
         searchedEx,
         handleSearchExercises,
         search,
         title } = useContext(FilterContext)
 
-        console.log(filterName);
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [exPerPage, setExPerPage] = useState(6)
+    const [exPerPage, setExPerPage] = useState(8)
 
 
     const lastExIndex = currentPage * exPerPage
     const firstExIndex = lastExIndex - exPerPage
 
-    const currentEx =
-        searchedEx ? searchedEx.slice(firstExIndex, lastExIndex)
-            : allExercises.slice(firstExIndex, lastExIndex)
+  
+    const currentEx = searchedEx ? searchedEx.slice(firstExIndex, lastExIndex)
+                                 : allExercises.slice(firstExIndex, lastExIndex)
+
 
     function funcSearchExercises() {
         handleSearchExercises()
         setCurrentPage(1)
+        setExPerPage(8)
     }
 
 
@@ -48,13 +48,21 @@ const ExercicesExemples = () => {
             bg="compBg"
             maxW='100%'
             p='1em'>
-            <Box display='flex' justifyContent='space-between' alignItems='flex-end' flexWrap="wrap" mx='10px'>
-                <Heading as='h1' size='4xl' color='lightBlue' display='flex' alignItems='flex-end' ml='30px'>
+            <Flex
+                justifyContent='center'
+                alignItems='center'
+                flexWrap='wrap'
+                mx='10px'
+            >
+                <Heading as='h1' fontSize='2.8em' color='textDistact' display='flex' alignItems='flex-end'>
                     {searchedEx ? `${title} exercises` : 'All Exercises'}
                     <Text fontSize='40%' color='grey' ml='10px'>
                         {`(${searchedEx ? searchedEx.length : allExercises.length})`}</Text>
 
                 </Heading>
+                <Show breakpoint='(min-width: 500px)'>
+                    <Spacer />
+                </Show>
                 <Box my='10px'>
                     <InputGroup>
                         <Input
@@ -71,41 +79,26 @@ const ExercicesExemples = () => {
                             />} />
                     </InputGroup>
                 </Box>
-            </Box>
+            </Flex>
 
             <Box display='flex' alignItems='flex-start' justifyContent='center'>
-                <Show breakpoint='(min-width: 500px)'>
-                    <ExercisesFilter/>
-                </Show>
                 <Box w='100%'
                     m='30px'
                     mt='50px'>
-                    <Box display='flex' h='fit-content' alignItems='center' justifyContent='space-between'>
-                        <Box>
-                            {searchedEx &&
-                                filterName.map((fil) => {
-                                    return <FilterTag filter={fil} />
-                                })
-                            }
-                        </Box>
-
-
+                    <Flex h='fit-content' alignItems='center' justifyContent='center'>
+                        <Show breakpoint='(min-width: 500px)'>
+                            <Spacer />
+                        </Show>
                         <Pagination
                             totalEx={searchedEx ? searchedEx.length : allExercises.length}
                             exPerPage={exPerPage}
                             setCurrentPage={setCurrentPage}
                             currPage={currentPage} />
-                    </Box>
+                    </Flex>
 
 
-                    <SimpleGrid minChildWidth='300px' spacing='10px'>
-                        {searchedEx ?
-                            searchedEx.map((Ex) => {
-                                return (
-                                    <ExerciseCard exercise={Ex} key={Ex.id} />
-                                )
-                            })
-                            :
+                    <SimpleGrid minChildWidth='300px' spacing='10px' alignItems='flex-start'>
+                        {
                             currentEx.map((Ex) => {
                                 return (
                                     <ExerciseCard exercise={Ex} key={Ex.id} />
