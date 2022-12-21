@@ -76,13 +76,13 @@ function FilterProvider({ children }) {
 
 
     function handleSearchExercises() {
+
         if (search) {
             const searchExercises = allExercises.filter((item) =>
             item.name.toLowerCase().includes(search.toLowerCase())
-                || item.id.includes(search)
-                || item.target.toLowerCase().includes(search.toLowerCase())
-                || item.equipment.toLowerCase().includes(search.toLowerCase())
-                || item.bodyPart.toLowerCase().includes(search.toLowerCase()),)
+            || item.target.toLowerCase().includes(search.toLowerCase())
+            || item.equipment.toLowerCase().includes(search.toLowerCase())
+            || item.bodyPart.toLowerCase().includes(search.toLowerCase()))
 
 
             if (searchExercises) {

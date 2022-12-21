@@ -32,6 +32,7 @@ const AddExModal = ({ isOpen, onClose, overlay }) => {
 
     function funcSearchExercises() {
 
+        console.log(search);
         if (search) {
             const currentEx = allExercises.filter((item) =>
                 item.name.toLowerCase().includes(search.toLowerCase())

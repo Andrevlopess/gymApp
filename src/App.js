@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { ChakraProvider } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import { Button, ChakraProvider } from '@chakra-ui/react';
 import { originTheme } from './Themes/OriginTheme';
 import { ExercisesProvider } from './Contexts/ExercicesContext';
 import Header from './Layout/Header';
@@ -14,10 +14,12 @@ import FilterProvider from './Contexts/FilterContext';
 import NewWorkout from './Pages/NewWorkout';
 import NewWorkoutProvider from './Contexts/NewWorkoutContext';
 import Footer from './Layout/Footer';
-import toast, { Toaster } from 'react-hot-toast';
-
+import { Toaster } from 'react-hot-toast';
+import { initializeApp } from 'firebase/app';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 
 function App() {
+
 
   return (
     <Router>
@@ -25,7 +27,7 @@ function App() {
         <NewWorkoutProvider>
           <ExercisesProvider>
             <FilterProvider>
-            <Toaster/>
+              <Toaster />
               <Header />
               <Routes>
                 <Route path='/' element={<Home />}></Route>
