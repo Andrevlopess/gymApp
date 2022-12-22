@@ -29,21 +29,113 @@ export const ExercisesProvider = ({ children }) => {
     const [personalWorkout, setPersonalWorkout] = useState([])
     const [control, setControl] = useState()
     const [defaultIndex, setDefaultIndex] = useState(0)
-    const [homeEx, setHomeEx] = useState()
-    
-    // * get home 10 exercises
+    const [homeEx, setHomeEx] = useState([
+        {
+            "bodyPart": "back",
+            "equipment": "cable",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1324.gif",
+            "id": "1324",
+            "name": "cable upper row",
+            "target": "upper back"
+        },
+        {
+            "bodyPart": "shoulders",
+            "equipment": "cable",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0246.gif",
+            "id": "0246",
+            "name": "cable upright row",
+            "target": "delts"
+        },
+        {
+            "bodyPart": "back",
+            "equipment": "cable",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1325.gif",
+            "id": "1325",
+            "name": "cable wide grip rear pulldown behind neck",
+            "target": "lats"
+        },
+        {
+            "bodyPart": "lower arms",
+            "equipment": "cable",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0247.gif",
+            "id": "0247",
+            "name": "cable wrist curl",
+            "target": "forearms"
+        },
+        {
+            "bodyPart": "lower legs",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1407.gif",
+            "id": "1407",
+            "name": "calf push stretch with hands against wall",
+            "target": "calves"
+        },
+        {
+            "bodyPart": "lower legs",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1377.gif",
+            "id": "1377",
+            "name": "calf stretch with hands against wall",
+            "target": "calves"
+        },
+        {
+            "bodyPart": "lower legs",
+            "equipment": "rope",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1378.gif",
+            "id": "1378",
+            "name": "calf stretch with rope",
+            "target": "calves"
+        },
+        {
+            "bodyPart": "back",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0248.gif",
+            "id": "0248",
+            "name": "cambered bar lying row",
+            "target": "upper back"
+        },
+        {
+            "bodyPart": "waist",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/2963.gif",
+            "id": "2963",
+            "name": "captains chair straight leg raise",
+            "target": "abs"
+        },
+        {
+            "bodyPart": "upper legs",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1548.gif",
+            "id": "1548",
+            "name": "chair leg extended stretch",
+            "target": "quads"
+        },
+        {
+            "bodyPart": "chest",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1271.gif",
+            "id": "1271",
+            "name": "chest and front of shoulder stretch",
+            "target": "pectorals"
+        },
+        {
+            "bodyPart": "chest",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0251.gif",
+            "id": "0251",
+            "name": "chest dip",
+            "target": "pectorals"
+        },
+        {
+            "bodyPart": "chest",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1430.gif",
+            "id": "1430",
+            "name": "chest dip (on dip-pull-up cage)",
+            "target": "pectorals"
+        }
+    ])
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/exercises?&_limit=10', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(res => res.json())
-                .then(json => setHomeEx(json))
-                .catch(err => console.log(err));
-    },[])
     // const salvar = () => {
     //     async function criarDado(bodyPart, equipment, gifUrl, id, name, target) {
     //         try {
@@ -77,45 +169,46 @@ export const ExercisesProvider = ({ children }) => {
 
     // useEffect(() => {
 
-        // const options = {
-        //     method: 'GET',
-        //     headers: {
-        //         'X-RapidAPI-Key': '6ca8fb195cmsh9cf95519b725b09p1e5e10jsnf71ad1030aed',
-        //         'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-        //     }
-        // };
+    // const options = {
+    //     method: 'GET',
+    //     headers: {
+    //         'X-RapidAPI-Key': '6ca8fb195cmsh9cf95519b725b09p1e5e10jsnf71ad1030aed',
+    //         'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+    //     }
+    // };
 
-        // fetch('https://exercisedb.p.rapidapi.com/exercises', options)
-        //     .then(response => response.json())
-        //     .then(response => console.log(response))
-        //     .catch(err => console.error(err));
+    // fetch('https://exercisedb.p.rapidapi.com/exercises', options)
+    //     .then(response => response.json())
+    //     .then(response => console.log(response))
+    //     .catch(err => console.error(err));
 
-   // }, [])
+    // }, [])
 
 
     // * get exercises from json-server
-    // useEffect(()=>{
-    //     fetch('http://localhost:5000/exercises', {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         })
-    //             .then(res => res.json())
-    //             .then(json => setAllExercises(json))
-    //             .catch(err => console.log(err));
-    // }, [])
+    useEffect(() => {
+        fetch('http://localhost:5000/exercises', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(json => setAllExercises(json))
+            .catch(err => console.log(err));
+    }, [])
 
-    // * get exercises from firebase
+    // * get exercises from firebase limit=50000/day
 
-     useEffect(() => {
-        const getUsers = async () => {
-          const data = await getDocs(ExercisesCollectionRef);
-          setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
+    //  useEffect(() => {
+    //         const getUsers = async () => {
+    //               const data = await getDocs(ExercisesCollectionRef);
+    //       setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    //     };
+    //     getUsers();
 
-        getUsers();
-     }, []);
+
+    //  }, []);
 
 
     // * Save workout functions --------------------------------
