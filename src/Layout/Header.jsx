@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import DrawerHome from '../Components/DrawerHome'
 import Drawer from '../Components/DrawerHome'
-import Logo from '../Icons/android-chrome-192x192.png'
+import Logo from '../Icons/logo.png'
 const Header = () => {
 
   return (
@@ -30,13 +30,9 @@ const Header = () => {
            <Box>
             <Link to="/exercisesExamples">Exercises</Link>
           </Box>
-          <Box>
-            <Link to="/gymPage">The Gym</Link>
+           <Box>
+            <Link to="/contactCreator">Contact creator</Link>
           </Box>
-          <Box>
-            <Link to="/aboutUs">About us</Link>
-          </Box>
-         
         </HStack>
       </Show>
 

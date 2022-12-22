@@ -93,8 +93,6 @@ export const ExercisesProvider = ({ children }) => {
    // }, [])
 
 
-    // console.log(allExercises);
-
     // * get exercises from json-server
     // useEffect(()=>{
     //     fetch('http://localhost:5000/exercises', {

@@ -11,6 +11,9 @@ import {
   Button,
   VStack,
   Box,
+  Text,
+  Heading,
+  Spacer,
 } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { FiMenu } from 'react-icons/fi'
@@ -33,9 +36,11 @@ const DrawerHome = () => {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <DrawerContent  bgColor='layoutBg' color='textContrast'>
+        <DrawerContent bgColor='layoutBg' color='textContrast'>
           <DrawerCloseButton />
-          <DrawerHeader color='textDistact'>Gym nation</DrawerHeader>
+          <DrawerHeader color='textDistact' py='20px'>
+            <Heading size='xl' fontWeight={800} color='textDistact' mb='25px'>Gym Nation</Heading>
+          </DrawerHeader>
 
 
           <DrawerBody>
@@ -46,18 +51,21 @@ const DrawerHome = () => {
               align='flex-start'
               mt='30px'
               fontSize='lg'>
-              <Box >
+              <Box onClick={onClose} >
                 <Link to="/workoutPlan">My workout</Link>
               </Box>
-              <Box >
-                <Link to="/exercicesExamples">Exercises</Link>
+              <Box onClick={onClose} >
+                <Link to="/exercisesExamples">Exercises</Link>
               </Box>
-              
+
             </VStack>
 
           </DrawerBody>
-
-
+          <DrawerFooter display='flex' justifyContent='flex-start'>
+            <Box onClick={onClose} my='18px'>
+              <Link to="/contactCreator">Contact creator</Link>
+            </Box>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </div >

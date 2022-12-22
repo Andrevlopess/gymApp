@@ -7,16 +7,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './Pages/Home';
 import './App.css'
 import WorkoutPlan from './Pages/WorkoutPlan';
-import GymPage from './Pages/GymPage';
-import AboutUs from './Pages/AboutUs';
 import ExercicesExemples from './Pages/ExercicesExemples';
 import FilterProvider from './Contexts/FilterContext';
 import NewWorkout from './Pages/NewWorkout';
 import NewWorkoutProvider from './Contexts/NewWorkoutContext';
 import Footer from './Layout/Footer';
 import { Toaster } from 'react-hot-toast';
-import { initializeApp } from 'firebase/app';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import ContactCreator from './Pages/ContactCreator';
 
 function App() {
 
@@ -32,9 +29,8 @@ function App() {
               <Routes>
                 <Route path='/' element={<Home />}></Route>
                 <Route path='/workoutplan' element={<WorkoutPlan />}></Route>
-                <Route path='/gymPage' element={<GymPage />}></Route>
                 <Route path='/newWorkout' element={<NewWorkout />}></Route>
-                <Route path='/aboutUs' element={<AboutUs />}></Route>
+                <Route path='/contactCreator' element={<ContactCreator />}></Route>
                 <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
               </Routes>
               <Footer />

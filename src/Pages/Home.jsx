@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Heading, Highlight, Image, Show, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Highlight, Image, Show, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import { useContext } from 'react'
 import { HiArrowNarrowRight } from 'react-icons/hi'
@@ -16,27 +16,34 @@ const Home = () => {
   const { personalWorkout, setDefaultIndex, homeEx } = useContext(ExercisesContext)
 
   return (
-    <Container maxW='none' w='100%' bgColor='layoutBg' minH='80vh' pt='50px'>
-      <Flex justifyContent='center' alignItems='center' h='40vh' flexDirection='column' pt='10vh' position='relative'
+    <Container maxW='none' w='100%' bgColor='layoutBg' pt='50px'>
+      <Flex justifyContent='center' alignItems='center' h='60vh' flexDirection='column' pt='6vh' position='relative'
         overflow='hidden'>
         <Heading size='4xl' fontWeight={800} color='textDistact' mb='25px'>Create your own workout!</Heading>
-        <Image src={dumbell} position='absolute' right='-10' h='200px' />
-        <Image src={gym} position='absolute' left='0' h='200px' top='0px' />
+        <Image src={dumbell} position='absolute' right='-10' h='18vw' />
         <Button py='20px' px='40px' mt='35px' bgColor='textDistact' color='textContrast'
           onClick={() => navigate('/workoutPlan')}>
           <Text mr='10px'>Get started</Text>
           <HiArrowNarrowRight size={25} /></Button>
       </Flex>
-      <Flex justifyContent='center' px='5%' my='10vh' flexDirection='column'>
 
-        <Heading size='3xl' fontWeight={800} color='textDistact' mb='25px'>
+      <Flex
+        justifyContent='center'
+        borderRadius='20px'
+        px='5%'
+        my='10vh'
+        flexDirection='column'
+        bgColor='homeDistactBg'
+        py='30px'>
+
+        <Heading size='3xl' fontWeight={800} color='textDistact' mb='25px' p='20px'>
           More than <Highlight query='1300' styles={{ py: '1', fontWeight: '800', color: '#EEEEEE' }} >
             1300
-          </Highlight> exercises</Heading>
+          </Highlight> exercises!</Heading>
 
         <Flex w='100%'>
           {homeEx &&
-            <HomeExSlider HomeEx={homeEx}/>
+            <HomeExSlider HomeEx={homeEx} />
           }
         </Flex>
 
@@ -46,17 +53,17 @@ const Home = () => {
       <Flex
         justifyContent='space-around'
         alignItems='center'
-        h='40vh'
         flexWrap='wrap'
         bgColor='homeDistactBg'
         borderRadius='20px'
         mt='100px'
+        p='30px'
       >
-        <Flex flexDirection='column' >
+        <Flex flexDirection='column' flexWrap='wrap'>
           <Heading size='3xl' fontWeight={800} color='textContrast'>My workouts</Heading>
           <Text fontWeight={800} color='grey' mt='20px'>Create your own workouts and save them!</Text>
         </Flex>
-        <Flex>
+        <SimpleGrid columns={2} spacing={5} my='20px'>
           {personalWorkout.length > 0 ?
             personalWorkout.map((workout) => {
               return (
@@ -99,7 +106,7 @@ const Home = () => {
             </Flex>
 
           }
-        </Flex>
+        </SimpleGrid>
 
 
       </Flex>

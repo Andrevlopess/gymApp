@@ -1,7 +1,6 @@
 import React from 'react'
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
-import dumbell from '../Icons/dumbell.png'
-import gym from '../Icons/gym.png'
+import '@splidejs/react-splide/css';
 import { Box } from '@chakra-ui/react';
 import HomeExercisesCard from './HomeExercisesCard';
 
@@ -13,7 +12,8 @@ const HomeExSlider = ({ HomeEx }) => {
                 <Splide
                     options={{
                         focus: 'center',
-                        perPage: 2,
+                        perPage: 1,
+                        padding: '5rem',
                         gap: '1em',
                         omitEnd: true,
                         breakpoints: {
@@ -29,7 +29,6 @@ const HomeExSlider = ({ HomeEx }) => {
                         HomeEx.map((ex) => {
                             return (
                                 <SplideSlide>
-
                                     <HomeExercisesCard ex={ex} />
                                 </SplideSlide>
                             )

@@ -51,7 +51,6 @@ const WorkoutTable = ({ target }) => {
                         <Th color='textDistact'>Target</Th>
                         <Th color='textDistact'>Example</Th>
                         <Th color='textDistact'>reps/sets</Th>
-                        <Th color='textDistact'>Done</Th>
                         <Th color='textDistact'>Details</Th>
                     </Tr>
                 </Thead>
@@ -64,9 +63,6 @@ const WorkoutTable = ({ target }) => {
                                     <Td>{ex.target}</Td>
                                     <Td><Image src={ex.gifUrl} boxSize="100px" minW='100px' /></Td>
                                     <Td>{ex.sets_reps ? ex.sets_reps : '--/--'}</Td>
-                                    <Td>
-                                        <Checkbox size='lg'></Checkbox>
-                                    </Td>
                                     <Td>
                                         <Button colorScheme='teal' variant='ghost'
                                         onClick={() => {

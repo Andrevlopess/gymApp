@@ -2,7 +2,7 @@ import React from 'react'
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Button, IconButton, Box, Flex } from '@chakra-ui/react'
 import WorkoutTable from './WorkoutTable'
 import { HiOutlinePlus, HiTrash } from 'react-icons/hi'
-import { BsThreeDotsVertical } from 'react-icons/bs'
+import { BsThreeDotsVertical, BsTrash } from 'react-icons/bs'
 import { FaRegEdit } from 'react-icons/fa'
 import {
     Menu,
@@ -64,23 +64,23 @@ const WorkoutList = ({ personalWorkout }) => {
                         return (
                             <TabPanel key={target.id}>
                                 <Flex justifyContent='flex-end'>
-                                <Menu>
-                                    <MenuButton
-                                        as={IconButton}
-                                        aria-label='Options'
-                                        icon={<BsThreeDotsVertical />}
-                                        variant='outline'
-                                        borderRadius='50px'
-                                        colorScheme='teal'
-                                    />
-                                    <MenuList bgColor='layoutBg' border='none'>
-                                        <MenuItem bgColor='layoutBg' color='textContrast' icon={<HiTrash size={18} />}
-                                            onClick={() => deleteWorkout(target)}
-                                        >
-                                            Delete
-                                        </MenuItem>
-                                    </MenuList>
-                                </Menu>
+                                    <Menu>
+                                        <MenuButton
+                                            as={IconButton}
+                                            aria-label='Options'
+                                            icon={<BsTrash size={20} />}
+                                            variant='outline'
+                                            borderRadius='50px'
+                                            colorScheme='teal'
+                                        />
+                                        <MenuList bgColor='layoutBg' border='none'>
+                                            <MenuItem bgColor='layoutBg' color='textContrast' icon={<HiTrash size={18} />}
+                                                onClick={() => deleteWorkout(target)}
+                                            >
+                                                Delete
+                                            </MenuItem>
+                                        </MenuList>
+                                    </Menu>
                                 </Flex>
 
                                 <WorkoutTable target={target} key={target.id} />
