@@ -21,15 +21,17 @@ import { useNavigate } from 'react-router-dom'
 
 const WorkoutList = ({ personalWorkout }) => {
 
-    const { deleteWorkout } = useContext(ExercisesContext)
+    const { deleteWorkout, defaultIndex } = useContext(ExercisesContext)
 
     const navigate = useNavigate()
+
 
     return (
         <Tabs
             variant='soft-rounded'
             colorScheme='facebook'
             my='30px'
+            defaultIndex={defaultIndex}
         >
             <Box w='100%' display='flex' justifyContent='space-between' alignItems='center'>
                 <TabList mx='20px' display='flex' overflowX='auto'>

@@ -28,7 +28,22 @@ export const ExercisesProvider = ({ children }) => {
     const [allExercises, setAllExercises] = useState([])
     const [personalWorkout, setPersonalWorkout] = useState([])
     const [control, setControl] = useState()
+    const [defaultIndex, setDefaultIndex] = useState(0)
+    const [homeEx, setHomeEx] = useState()
+    
+    // * get home 10 exercises
 
+    useEffect(()=>{
+        fetch('http://localhost:5000/exercises?&_limit=10', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(json => setHomeEx(json))
+                .catch(err => console.log(err));
+    },[])
     // const salvar = () => {
     //     async function criarDado(bodyPart, equipment, gifUrl, id, name, target) {
     //         try {
@@ -80,16 +95,29 @@ export const ExercisesProvider = ({ children }) => {
 
     // console.log(allExercises);
 
-    // * get exercises functions
+    // * get exercises from json-server
+    // useEffect(()=>{
+    //     fetch('http://localhost:5000/exercises', {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         })
+    //             .then(res => res.json())
+    //             .then(json => setAllExercises(json))
+    //             .catch(err => console.log(err));
+    // }, [])
 
-    useEffect(() => {
+    // * get exercises from firebase
+
+     useEffect(() => {
         const getUsers = async () => {
           const data = await getDocs(ExercisesCollectionRef);
           setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
 
         getUsers();
-      }, []);
+     }, []);
 
 
     // * Save workout functions --------------------------------
@@ -114,11 +142,16 @@ export const ExercisesProvider = ({ children }) => {
     }
 
 
+
+
     return (
         <ExercisesContext.Provider value={{
             personalWorkout,
             deleteWorkout,
             allExercises,
+            defaultIndex,
+            setDefaultIndex,
+            homeEx,
         }}>
             {children}
         </ExercisesContext.Provider>

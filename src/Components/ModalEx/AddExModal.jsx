@@ -60,11 +60,11 @@ const AddExModal = ({ isOpen, onClose, overlay }) => {
 
                             onChange={(e) => {
                                 setSearch(e.target.value)
-                                funcSearchExercises()
                             }}
                         />
                         <InputRightElement children={
                             <IconButton aria-label='Search database' icon={<HiOutlineSearch />} />}
+                            onClick={() => funcSearchExercises()}
                         />
 
                     </InputGroup>
