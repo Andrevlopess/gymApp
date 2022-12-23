@@ -35,10 +35,10 @@ const WorkoutPlan = () => {
                    <Spacer/>
                 </Show>
                 <Box display='flex' flexWrap='wrap' alignItems='center' my='40px'>
-                    <Button colorScheme='teal'  borderRadius='40px' mr='5px'>
+                    <Button colorScheme='teal'  borderRadius='40px' mr='5px' boxShadow='dark-lg'>
                         <Link to="/exercisesExamples">More exercises</Link>
                     </Button>
-                    <Button colorScheme='teal'  borderRadius='40px'>
+                    <Button colorScheme='teal'  borderRadius='40px'boxShadow='dark-lg'>
                         <Link to="/newWorkout">New workout</Link>
                     </Button>
                 </Box>

@@ -52,7 +52,7 @@ const ExercicesExemples = () => {
                 flexWrap='wrap'
                 mx='10px'
             >
-                <Heading as='h1' fontSize='2.8em' color='textDistact' display='flex' alignItems='flex-end'>
+                <Heading as='h1' fontSize='3.6em' color='textDistact' display='flex' alignItems='flex-end'>
                     {searchedEx ? `${title} exercises` : 'All Exercises'}
                     <Text fontSize='40%' color='grey' ml='10px'>
                         {`(${searchedEx ? searchedEx.length : allExercises.length})`}</Text>
@@ -62,7 +62,7 @@ const ExercicesExemples = () => {
                     <Spacer />
                 </Show>
                 <Box my='10px'>
-                    <InputGroup>
+                    <InputGroup boxShadow='dark-lg'>
                         <Input
                             variant='outlined'
                             placeholder='Serch for exercises'

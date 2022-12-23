@@ -16,12 +16,14 @@ const Home = () => {
   const { personalWorkout, setDefaultIndex, homeEx } = useContext(ExercisesContext)
 
   return (
-    <Container maxW='none' w='100%' bgColor='layoutBg' pt='50px'>
-      <Flex justifyContent='center' alignItems='center' h='60vh' flexDirection='column' pt='6vh' position='relative'
+    <Container maxW='none' w='100%' bgColor='layoutBg' py='50px'>
+      <Flex justifyContent='center' alignItems='center' h='60vh' flexDirection='column' position='relative'
         overflow='hidden'>
-        <Heading size='4xl' fontWeight={800} color='textDistact' mb='25px'>Create your own workout!</Heading>
+        <Heading size='4xl' fontWeight={800} color='textDistact' mb='25px'
+        >Create your own workout!</Heading>
         <Image src={dumbell} position='absolute' right='-10' h='18vw' />
         <Button py='20px' px='40px' mt='35px' bgColor='textDistact' color='textContrast'
+          boxShadow='dark-lg'
           onClick={() => navigate('/workoutPlan')}>
           <Text mr='10px'>Get started</Text>
           <HiArrowNarrowRight size={25} /></Button>

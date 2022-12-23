@@ -9,5 +9,6 @@ export const originTheme = extendTheme({
       textContrast: "#EEEEEE",
       lightBlue: '#A6E3E9',
       grey:'#B2B2B2',
+      footerBg: '#1a1e24'
     },
   })

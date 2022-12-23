@@ -22,7 +22,7 @@ const Pagination = ({ setCurrentPage, currPage, totalEx, exPerPage }) => {
     return (
         <Box display='flex' justifyContent='space-between' alignItems='center'>
 
-            <Button onClick={previousPage}><GrFormPrevious size='1.5em' /></Button>
+            <Button onClick={previousPage} boxShadow='dark-lg'><GrFormPrevious size='1.5em' /></Button>
             <Center
                 p='5px'
                 color='black'
@@ -41,6 +41,7 @@ const Pagination = ({ setCurrentPage, currPage, totalEx, exPerPage }) => {
                         setCurrentPage(e.target.value)
                     }}
                     cursor='pointer'
+                    boxShadow='dark-lg'
                 />
                 <Center
                     h='40px'
@@ -51,7 +52,7 @@ const Pagination = ({ setCurrentPage, currPage, totalEx, exPerPage }) => {
                     {Pages}
                 </Center>
             </Center>
-            <Button onClick={nextPage}><GrFormNext size='1.5em' /></Button>
+            <Button onClick={nextPage} boxShadow='dark-lg'><GrFormNext size='1.5em' /></Button>
         </Box>
 
     )
