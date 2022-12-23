@@ -126,29 +126,29 @@ export const ExercisesProvider = ({ children }) => {
 
 
     // * get exercises from json-server
-    useEffect(() => {
-        fetch('http://localhost:5000/exercises', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(json => setAllExercises(json))
-            .catch(err => console.log(err));
-    }, [])
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/exercises', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //         .then(res => res.json())
+    //         .then(json => setAllExercises(json))
+    //         .catch(err => console.log(err));
+    // }, [])
 
     // * get exercises from firebase limit=50000/day
 
-    //  useEffect(() => {
-    //         const getUsers = async () => {
-    //               const data = await getDocs(ExercisesCollectionRef);
-    //       setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    //     };
-    //     getUsers();
+     useEffect(() => {
+            const getUsers = async () => {
+                  const data = await getDocs(ExercisesCollectionRef);
+          setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+        getUsers();
 
 
-    //  }, []);
+     }, []);
 
 
     // * Save workout functions --------------------------------
