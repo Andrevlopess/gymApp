@@ -30,86 +30,79 @@ export const ExercisesProvider = ({ children }) => {
     const [control, setControl] = useState()
     const [defaultIndex, setDefaultIndex] = useState(0)
     const [homeEx, setHomeEx] = useState([
-        {
-            "bodyPart": "back",
-            "equipment": "rope",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0680.gif",
-            "id": "0680",
-            "name": "rope climb",
-            "target": "upper back"
-        },
-        {
-            "bodyPart": "cardio",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0685.gif",
-            "id": "0685",
-            "name": "run",
-            "target": "cardiovascular system"
-        },
-        {
-            "bodyPart": "cardio",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0684.gif",
-            "id": "0684",
-            "name": "run (equipment)",
-            "target": "cardiovascular system"
-        },
-        {
-            "bodyPart": "upper legs",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1585.gif",
-            "id": "1585",
-            "name": "runners stretch",
-            "target": "hamstrings"
-        },
-        {
-            "bodyPart": "waist",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0687.gif",
-            "id": "0687",
-            "name": "russian twist",
-            "target": "abs"
-        },
-        {
-            "bodyPart": "back",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3012.gif",
-            "id": "3012",
-            "name": "scapula dips",
-            "target": "traps"
-        },
-        {
-            "bodyPart": "chest",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3021.gif",
-            "id": "3021",
-            "name": "scapula push-up",
-            "target": "serratus anterior"
-        },
-        {
-            "bodyPart": "back",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0688.gif",
-            "id": "0688",
-            "name": "scapular pull-up",
-            "target": "traps"
-        },
-        {
-            "bodyPart": "cardio",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3219.gif",
-            "id": "3219",
-            "name": "scissor jumps (male)",
-            "target": "cardiovascular system"
-        },
-        {
-            "bodyPart": "lower legs",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1390.gif",
-            "id": "1390",
-            "name": "seated calf stretch",
-            "target": "calves"
-        }
+            {
+                "bodyPart": "shoulders",
+                "equipment": "dumbbell",
+                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0334.gif",
+                "id": "0334",
+                "name": "dumbbell lateral raise",
+                "target": "delts"
+            },
+            {
+                "bodyPart": "chest",
+                "equipment": "barbell",
+                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0025.gif",
+                "id": "0025",
+                "name": "barbell bench press",
+                "target": "pectorals"
+            },
+            {
+                "bodyPart": "upper legs",
+                "equipment": "sled machine",
+                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0739.gif",
+                "id": "0739",
+                "name": "sled 45в° leg press",
+                "target": "glutes"
+            },
+            {
+                "bodyPart": "back",
+                "equipment": "barbell",
+                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0027.gif",
+                "id": "0027",
+                "name": "barbell bent over row",
+                "target": "upper back"
+            },
+            {
+                "bodyPart": "waist",
+                "equipment": "body weight",
+                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0001.gif",
+                "id": "0001",
+                "name": "3/4 sit-up",
+                "target": "abs"
+            },
+            {
+                "bodyPart": "upper arms",
+                "equipment": "barbell",
+                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0031.gif",
+                "id": "0031",
+                "name": "barbell curl",
+                "target": "biceps"
+            },
+            {
+                "bodyPart": "upper arms",
+                "equipment": "cable",
+                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1722.gif",
+                "id": "1722",
+                "name": "cable high pulley overhead tricep extension",
+                "target": "triceps"
+            },
+            {
+                "bodyPart": "lower arms",
+                "equipment": "barbell",
+                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1411.gif",
+                "id": "1411",
+                "name": "barbell palms down wrist curl over a bench",
+                "target": "forearms"
+            },
+            {
+                "bodyPart": "back",
+                "equipment": "cable",
+                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0818.gif",
+                "id": "0818",
+                "name": "twin handle parallel grip lat pulldown",
+                "target": "lats"
+            }
+        
     ])
 
     // * get all exercises from rapid.api 

@@ -9,7 +9,6 @@ const HomeExercisesCard = ({ ex }) => {
     return (
         <Atropos>
             <Flex
-                m='30px'
                 bgColor='homeDistactBg'
                 borderRadius='10px'
                 color='textContrast'
@@ -27,7 +26,7 @@ const HomeExercisesCard = ({ ex }) => {
 
                 <Spacer />
                 <Image src={ex.gifUrl}
-                    objectFit='scale-down'
+                    objectFit='cover'
                     borderRadius='10px'
                 />
             </Flex>

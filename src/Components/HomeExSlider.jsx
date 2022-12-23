@@ -28,7 +28,7 @@ const HomeExSlider = ({ HomeEx }) => {
                     {HomeEx &&
                         HomeEx.map((ex) => {
                             return (
-                                <SplideSlide>
+                                <SplideSlide key={ex.id}>
                                     <HomeExercisesCard ex={ex} />
                                 </SplideSlide>
                             )

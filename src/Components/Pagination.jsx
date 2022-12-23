@@ -9,7 +9,7 @@ const Pagination = ({ setCurrentPage, currPage, totalEx, exPerPage }) => {
 
     const nextPage = () => {
         if (currPage < Pages) {
-            setCurrentPage(currPage++)
+            setCurrentPage(currPage + 1)
         }
     }
 
