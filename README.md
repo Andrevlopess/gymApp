@@ -1,6 +1,12 @@
 ## Gym Nation 
-#### Gym nation is an app to organize your workouts where you can search for more than 1300 exercises and create your own and personalizate workout.
-### Deployed at vercel => https://gym-nation.vercel.app/
+#### Gym nation is an website to organize your workouts where you can search for more than 1300 exercises and create your own and personalizate workout.
+#### Deployed at vercel: https://gym-nation.vercel.app/
+
+:white_check_mark: FireBase Database
+<Br/>
+:white_check_mark: LocalStorage Save
+<Br/>
+:white_check_mark: 1327 exercises from exercisedb.io
 
 # :rocket: Biult with 
 
