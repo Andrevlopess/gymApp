@@ -15,16 +15,16 @@ const HomeExercisesCard = ({ ex }) => {
             flexWrap='wrap'
             alignItems='center'
         >
-            <Flex flexDirection='column' alignItems='center' p='20px' justifyContent='flex-start'>
+            <Flex flexDirection='column' alignItems='flex-start' p='20px' justifyContent='flex-start'>
                 <Heading size='md' fontWeight={800} color='textContrast' mb='25px'>{ex.name}</Heading>
-                    <Text mx='10px'>{ex.target}</Text>
-                    <Text mx='10px'>{ex.bodyPart}</Text>
+                    <Text mx='5px'>{ex.target}</Text>
+                    <Text mx='5px' color='grey'>{ex.bodyPart}</Text>
             </Flex>
+        
+        <Spacer/>
             <Image src={ex.gifUrl}
-                objectFit='cover'
-                borderTopRightRadius='10px'
-                borderBottomRightRadius='10px'
-
+                objectFit='scale-down'
+                borderRadius='10px'
             />
         </Flex>
     )

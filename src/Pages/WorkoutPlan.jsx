@@ -11,7 +11,6 @@ const WorkoutPlan = () => {
     const { personalWorkout } = useContext(ExercisesContext)
 
 
-
     return (
         <Container
             w='100%'
@@ -46,7 +45,6 @@ const WorkoutPlan = () => {
             </Flex>
 
             {personalWorkout.length > 0 ?
-
                 <WorkoutList personalWorkout={personalWorkout} />
                 :
                 <Box w='100%'>

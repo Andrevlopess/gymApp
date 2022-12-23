@@ -25,15 +25,13 @@ function NewWorkoutProvider({ children }) {
 
     const createWorkout = (workout) => {
 
-        console.log(workout);
-
         const datas = getWorkouts()
 
         datas.push(
             {
                 title: workoutTitle,
                 description: description,
-                id: datas.length + 1,
+                id: datas.length,
                 workout: workout
             }
             )

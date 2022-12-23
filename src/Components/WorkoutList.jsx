@@ -39,8 +39,6 @@ const WorkoutList = ({ personalWorkout }) => {
                         personalWorkout.map((ex) => {
                             return (
                                 <Tab key={ex.id} mx='5px'>{ex.title}</Tab>
-
-
                             )
                         })
 

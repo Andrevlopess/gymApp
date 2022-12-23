@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Heading, Highlight, Image, Show, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Highlight, Image, Show, SimpleGrid, Text, Wrap, WrapItem } from '@chakra-ui/react'
 import React from 'react'
 import { useContext } from 'react'
 import { HiArrowNarrowRight } from 'react-icons/hi'
@@ -53,9 +53,9 @@ const Home = () => {
       <Flex
         justifyContent='space-around'
         alignItems='center'
-        flexWrap='wrap'
         bgColor='homeDistactBg'
         borderRadius='20px'
+        flexWrap='wrap'
         mt='100px'
         p='30px'
       >
@@ -63,50 +63,54 @@ const Home = () => {
           <Heading size='3xl' fontWeight={800} color='textContrast'>My workouts</Heading>
           <Text fontWeight={800} color='grey' mt='20px'>Create your own workouts and save them!</Text>
         </Flex>
-        <SimpleGrid columns={2} spacing={5} my='20px'>
-          {personalWorkout.length > 0 ?
-            personalWorkout.map((workout) => {
-              return (
-                <Flex key={workout.id}
-                  onClick={() => {
-                    navigate('/workoutPlan')
-                    setDefaultIndex(workout.id - 1)
-                  }}
-                  flexDirection='column'
-                  border='1px'
-                  fontWeight={800}
-                  color='textContrast'
-                  py='10px'
-                  px='30px'
-                  borderRadius='10px'
-                  mx='10px'
-                  cursor='pointer'>
-                  {workout.title}
-                  <Text
-                    fontWeight={800}
-                    color='grey'
-                    as='i'>
-                    {workout.description ? `"${workout.description}"` : null}
-                  </Text>
-                </Flex>
-              )
-            })
-            :
-            <Flex onClick={() => {
-              navigate('/newWorkout')
-            }}
-              cursor='pointer'
-              border='1px'
-              py='10px'
-              px='30px'
-              borderRadius='10px'
-              borderColor='textContrast'>
-              <Text fontWeight={800}
-                color='textContrast'>Create a workout</Text>
-            </Flex>
+        <Box mt='30px'>
+          <Wrap columns={2} spacing={5} my='20px'>
+            {personalWorkout.length > 0 ?
+              personalWorkout.map((workout) => {
+                return (
+                  <WrapItem>
+                    <Flex key={workout.id}
+                      onClick={() => {
+                        navigate('/workoutPlan')
+                        setDefaultIndex(workout.id)
+                      }}
+                      flexDirection='column'
+                      border='1px'
+                      fontWeight={800}
+                      w='280px'
+                      color='textContrast'
+                      py='10px'
+                      px='30px'
+                      borderRadius='10px'
+                      cursor='pointer'>
+                      {workout.title}
+                      <Text
+                        fontWeight={800}
+                        color='grey'
+                        as='i'>
+                        {workout.description ? `"${workout.description}"` : null}
+                      </Text>
+                    </Flex>
+                  </WrapItem>
+                )
+              })
+              :
+              <Flex onClick={() => {
+                navigate('/newWorkout')
+              }}
+                cursor='pointer'
+                border='1px'
+                py='10px'
+                px='30px'
+                borderRadius='10px'
+                borderColor='textContrast'>
+                <Text fontWeight={800}
+                  color='textContrast'>Create a workout</Text>
+              </Flex>
+            }
+          </Wrap>
+        </Box>
 
-          }
-        </SimpleGrid>
 
 
       </Flex>

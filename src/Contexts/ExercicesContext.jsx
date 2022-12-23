@@ -32,140 +32,87 @@ export const ExercisesProvider = ({ children }) => {
     const [homeEx, setHomeEx] = useState([
         {
             "bodyPart": "back",
-            "equipment": "cable",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1324.gif",
-            "id": "1324",
-            "name": "cable upper row",
-            "target": "upper back"
-        },
-        {
-            "bodyPart": "shoulders",
-            "equipment": "cable",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0246.gif",
-            "id": "0246",
-            "name": "cable upright row",
-            "target": "delts"
-        },
-        {
-            "bodyPart": "back",
-            "equipment": "cable",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1325.gif",
-            "id": "1325",
-            "name": "cable wide grip rear pulldown behind neck",
-            "target": "lats"
-        },
-        {
-            "bodyPart": "lower arms",
-            "equipment": "cable",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0247.gif",
-            "id": "0247",
-            "name": "cable wrist curl",
-            "target": "forearms"
-        },
-        {
-            "bodyPart": "lower legs",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1407.gif",
-            "id": "1407",
-            "name": "calf push stretch with hands against wall",
-            "target": "calves"
-        },
-        {
-            "bodyPart": "lower legs",
-            "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1377.gif",
-            "id": "1377",
-            "name": "calf stretch with hands against wall",
-            "target": "calves"
-        },
-        {
-            "bodyPart": "lower legs",
             "equipment": "rope",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1378.gif",
-            "id": "1378",
-            "name": "calf stretch with rope",
-            "target": "calves"
-        },
-        {
-            "bodyPart": "back",
-            "equipment": "barbell",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0248.gif",
-            "id": "0248",
-            "name": "cambered bar lying row",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0680.gif",
+            "id": "0680",
+            "name": "rope climb",
             "target": "upper back"
         },
         {
-            "bodyPart": "waist",
+            "bodyPart": "cardio",
             "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/2963.gif",
-            "id": "2963",
-            "name": "captains chair straight leg raise",
-            "target": "abs"
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0685.gif",
+            "id": "0685",
+            "name": "run",
+            "target": "cardiovascular system"
+        },
+        {
+            "bodyPart": "cardio",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0684.gif",
+            "id": "0684",
+            "name": "run (equipment)",
+            "target": "cardiovascular system"
         },
         {
             "bodyPart": "upper legs",
             "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1548.gif",
-            "id": "1548",
-            "name": "chair leg extended stretch",
-            "target": "quads"
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1585.gif",
+            "id": "1585",
+            "name": "runners stretch",
+            "target": "hamstrings"
+        },
+        {
+            "bodyPart": "waist",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0687.gif",
+            "id": "0687",
+            "name": "russian twist",
+            "target": "abs"
+        },
+        {
+            "bodyPart": "back",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3012.gif",
+            "id": "3012",
+            "name": "scapula dips",
+            "target": "traps"
         },
         {
             "bodyPart": "chest",
             "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1271.gif",
-            "id": "1271",
-            "name": "chest and front of shoulder stretch",
-            "target": "pectorals"
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3021.gif",
+            "id": "3021",
+            "name": "scapula push-up",
+            "target": "serratus anterior"
         },
         {
-            "bodyPart": "chest",
+            "bodyPart": "back",
             "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0251.gif",
-            "id": "0251",
-            "name": "chest dip",
-            "target": "pectorals"
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0688.gif",
+            "id": "0688",
+            "name": "scapular pull-up",
+            "target": "traps"
         },
         {
-            "bodyPart": "chest",
+            "bodyPart": "cardio",
             "equipment": "body weight",
-            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1430.gif",
-            "id": "1430",
-            "name": "chest dip (on dip-pull-up cage)",
-            "target": "pectorals"
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3219.gif",
+            "id": "3219",
+            "name": "scissor jumps (male)",
+            "target": "cardiovascular system"
+        },
+        {
+            "bodyPart": "lower legs",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1390.gif",
+            "id": "1390",
+            "name": "seated calf stretch",
+            "target": "calves"
         }
     ])
 
-    // const salvar = () => {
-    //     async function criarDado(bodyPart, equipment, gifUrl, id, name, target) {
-    //         try {
-    //             const exercises = await addDoc(collection(db, "ExercisesList"), {
-    //                 bodyPart,
-    //                 equipment,
-    //                 gifUrl,
-    //                 id,
-    //                 name,
-    //                 target,
-    //             });
-
-    //         } catch (e) {
-    //             console.error("Error adding document: ", e);
-    //         }
-    //     }
-
-
-    //     teste.forEach(element => {
-    //         criarDado(
-    //             element.bodyPart,
-    //             element.equipment,
-    //             element.gifUrl,
-    //             element.id,
-    //             element.name,
-    //             element.target);
-    //     });
-    // }
-
-    // * teste aqui em 
+    // * get all exercises from rapid.api 
 
     // useEffect(() => {
 
