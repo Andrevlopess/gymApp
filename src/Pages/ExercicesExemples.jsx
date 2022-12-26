@@ -107,7 +107,7 @@ const ExercicesExemples = () => {
                     </Flex>
 
                     <SimpleGrid minChildWidth='300px' spacing='10px' alignItems='flex-start'>
-                        {currentEx.length > 0 ?
+                        {currentEx.length ?
                             currentEx.map((Ex) => {
                                 return (
                                     <ExerciseCard exercise={Ex} key={Ex.id} />

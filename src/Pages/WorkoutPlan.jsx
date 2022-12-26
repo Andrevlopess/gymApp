@@ -44,7 +44,7 @@ const WorkoutPlan = () => {
                 </Box>
             </Flex>
 
-            {personalWorkout.length > 0 ?
+            {personalWorkout ?
                 <WorkoutList personalWorkout={personalWorkout} />
                 :
                 <Box w='100%'>

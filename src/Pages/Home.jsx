@@ -67,7 +67,7 @@ const Home = () => {
         </Flex>
         <Box mt='30px'>
           <Wrap columns={2} spacing={5} my='20px'>
-            {personalWorkout.length > 0 ?
+            {personalWorkout ?
               personalWorkout.map((workout) => {
                 return (
                   <WrapItem key={workout.id}>
