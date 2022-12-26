@@ -70,8 +70,8 @@ const Home = () => {
             {personalWorkout.length > 0 ?
               personalWorkout.map((workout) => {
                 return (
-                  <WrapItem>
-                    <Flex key={workout.id}
+                  <WrapItem key={workout.id}>
+                    <Flex
                       onClick={() => {
                         navigate('/workoutPlan')
                         setDefaultIndex(workout.id)

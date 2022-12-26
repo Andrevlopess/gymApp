@@ -3,8 +3,8 @@ import { useState } from "react";
 import { createContext } from "react";
 import { NewWorkoutContext } from "./NewWorkoutContext";
 import { initializeApp } from "firebase/app";
-
-import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc } from "firebase/firestore";
+import {exercises} from './Exercises.js'
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 
 const firebaseConfig = initializeApp({
@@ -25,7 +25,8 @@ export const ExercisesProvider = ({ children }) => {
     const ExercisesCollectionRef = collection(db, "ExercisesList");
 
     const { workout } = useContext(NewWorkoutContext)
-    const [allExercises, setAllExercises] = useState([])
+
+    const [allExercises, setAllExercises] = useState(exercises)
     const [personalWorkout, setPersonalWorkout] = useState([])
     const [control, setControl] = useState()
     const [defaultIndex, setDefaultIndex] = useState(0)
@@ -140,15 +141,15 @@ export const ExercisesProvider = ({ children }) => {
 
     // * get exercises from firebase limit=50000/day
 
-     useEffect(() => {
-            const getUsers = async () => {
-                  const data = await getDocs(ExercisesCollectionRef);
-          setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-        getUsers();
+    //  useEffect(() => {
+    //         const getUsers = async () => {
+    //               const data = await getDocs(ExercisesCollectionRef);
+    //       setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    //     };
+    //     getUsers();
 
 
-     }, []);
+    //  }, []);
 
 
     // * Save workout functions --------------------------------
