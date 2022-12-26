@@ -6,7 +6,6 @@ import 'atropos/css'
 const ExerciseCard = ({ exercise }) => {
   return (
     <div>
-      <Atropos shadow={false} >
         <Card color='textDistact' boxShadow='2xl' border='1px' borderColor='gray.200' maxW='400px'>
           <CardHeader display='flex' justifyContent='space-between' alignItems='flex-start'>
             <Heading size='md'>{exercise.name}</Heading>
@@ -37,10 +36,7 @@ const ExerciseCard = ({ exercise }) => {
               {exercise.bodyPart}
             </Highlight>
           </CardFooter>
-
         </Card>
-      </Atropos>
-
     </div>
   )
 }

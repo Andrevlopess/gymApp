@@ -52,8 +52,8 @@ const ExercicesExemples = () => {
                 flexWrap='wrap'
                 mx='10px'
             >
-                <Heading as='h1' fontSize='3.6em' color='textDistact' display='flex' alignItems='flex-end'>
-                    {searchedEx ? `${title} exercises` : 'All Exercises'}
+                <Heading as='h1' fontSize='2.9em' color='textDistact' display='flex' alignItems='flex-end' my='10px'>
+                    {searchedEx ? `${title} exercises` : 'All exercises'}
                     <Text fontSize='40%' color='grey' ml='10px'>
                         {`(${searchedEx ? searchedEx.length : allExercises.length})`}</Text>
 
@@ -79,7 +79,7 @@ const ExercicesExemples = () => {
                 </Box>
             </Flex>
 
-            <Box display='flex' alignItems='flex-start' justifyContent='center'>
+            <Box display='flex' alignItems='flex-start' justifyContent='center' flexWrap='wrap-reverse'>
                 <Box w='100%'
                     m='30px'
                     mt='50px'>
@@ -126,7 +126,15 @@ const ExercicesExemples = () => {
                         }
                     </SimpleGrid>
 
+                    <Show breakpoint='(max-width: 500px)'>
+                        <Flex justifyContent='center' mt='30px' >
+                            <Pagination totalEx={searchedEx ? searchedEx.length : allExercises.length}
+                                exPerPage={exPerPage}
+                                setCurrentPage={setCurrentPage}
+                                currPage={currentPage} />
+                        </Flex>
 
+                    </Show>
                 </Box>
             </Box>
 
