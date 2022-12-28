@@ -19,7 +19,7 @@ import {
     useDisclosure,
     ModalOverlay,
 } from '@chakra-ui/react'
-import DetailsModal from './ModalEx/DetailsModal'
+import DetailsModal from './modals/DetailsModal'
 import { useState } from 'react'
 
 const WorkoutTable = ({ target }) => {

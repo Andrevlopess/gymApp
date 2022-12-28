@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Heading, IconButton, Image, Input, InputGroup, InputRightElement, Show, SimpleGrid, Skeleton, Spacer, Spinner, Tag, TagCloseButton, TagLabel, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, IconButton, Image, Input, InputGroup, InputRightElement, ModalOverlay, Show, SimpleGrid, Skeleton, Spacer, Spinner, Tag, TagCloseButton, TagLabel, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { HiOutlineSearch } from 'react-icons/hi'
@@ -7,10 +7,13 @@ import Pagination from '../Components/Pagination'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
 import { FilterContext } from '../Contexts/FilterContext'
 import PropagateLoader from "react-spinners/PropagateLoader";
+import AddExToWorkout from '../Components/modals/AddToWorkout'
 
 const ExercicesExemples = () => {
 
     const { allExercises } = useContext(ExercisesContext)
+
+    
 
     const {
         setSearch,
@@ -137,10 +140,6 @@ const ExercicesExemples = () => {
                     </Show>
                 </Box>
             </Box>
-
-
-
-
         </Container>
     )
 }

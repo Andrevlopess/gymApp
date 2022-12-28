@@ -162,7 +162,6 @@ export const ExercisesProvider = ({ children }) => {
 
     const getWorkouts = () => {
         const workouts = JSON.parse(localStorage.getItem('workouts') || '[]')
-
         return workouts
     }
 
@@ -171,6 +170,10 @@ export const ExercisesProvider = ({ children }) => {
         localStorage.setItem('workouts', JSON.stringify(data))
 
         setControl(data)
+    }
+
+    function updateWorkout(){
+
     }
 
 

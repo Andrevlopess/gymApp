@@ -23,7 +23,7 @@ import React from 'react'
 import { useContext } from 'react'
 import { BsTrash } from 'react-icons/bs'
 import { HiOutlinePlus } from 'react-icons/hi'
-import AddExModal from '../Components/ModalEx/AddExModal'
+import AddExModal from '../Components/modals/AddExModal'
 import { NewWorkoutContext } from '../Contexts/NewWorkoutContext'
 import RepsAndSets from '../Components/EditableSets_Reps'
 import { toast } from 'react-hot-toast'
@@ -122,7 +122,8 @@ const NewWorkout = () => {
                                                         <RepsAndSets ex={exercise} index={exercise.id} />
                                                     </Td>
                                                     <Td><Image src={exercise.gifUrl} boxSize="100px" minW='100px' /></Td>
-                                                    <Td><BsTrash
+                                                    <Td>
+                                                        <BsTrash
                                                         size={25}
                                                         color='#E53E3E'
                                                         onClick={() => removeExTable(exercise)} /></Td>
