@@ -3,7 +3,7 @@ import { useState } from "react";
 import { createContext } from "react";
 import { NewWorkoutContext } from "./NewWorkoutContext";
 import { initializeApp } from "firebase/app";
-import {exercises} from './Exercises.js'
+import { exercises } from './Exercises.js'
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 
@@ -31,79 +31,79 @@ export const ExercisesProvider = ({ children }) => {
     const [control, setControl] = useState()
     const [defaultIndex, setDefaultIndex] = useState(0)
     const [homeEx, setHomeEx] = useState([
-            {
-                "bodyPart": "shoulders",
-                "equipment": "dumbbell",
-                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0334.gif",
-                "id": "0334",
-                "name": "dumbbell lateral raise",
-                "target": "delts"
-            },
-            {
-                "bodyPart": "chest",
-                "equipment": "barbell",
-                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0025.gif",
-                "id": "0025",
-                "name": "barbell bench press",
-                "target": "pectorals"
-            },
-            {
-                "bodyPart": "upper legs",
-                "equipment": "sled machine",
-                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0739.gif",
-                "id": "0739",
-                "name": "sled 45в° leg press",
-                "target": "glutes"
-            },
-            {
-                "bodyPart": "back",
-                "equipment": "barbell",
-                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0027.gif",
-                "id": "0027",
-                "name": "barbell bent over row",
-                "target": "upper back"
-            },
-            {
-                "bodyPart": "waist",
-                "equipment": "body weight",
-                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0001.gif",
-                "id": "0001",
-                "name": "3/4 sit-up",
-                "target": "abs"
-            },
-            {
-                "bodyPart": "upper arms",
-                "equipment": "barbell",
-                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0031.gif",
-                "id": "0031",
-                "name": "barbell curl",
-                "target": "biceps"
-            },
-            {
-                "bodyPart": "upper arms",
-                "equipment": "cable",
-                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1722.gif",
-                "id": "1722",
-                "name": "cable high pulley overhead tricep extension",
-                "target": "triceps"
-            },
-            {
-                "bodyPart": "lower arms",
-                "equipment": "barbell",
-                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1411.gif",
-                "id": "1411",
-                "name": "barbell palms down wrist curl over a bench",
-                "target": "forearms"
-            },
-            {
-                "bodyPart": "back",
-                "equipment": "cable",
-                "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0818.gif",
-                "id": "0818",
-                "name": "twin handle parallel grip lat pulldown",
-                "target": "lats"
-            }
-        
+        {
+            "bodyPart": "shoulders",
+            "equipment": "dumbbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0334.gif",
+            "id": "0334",
+            "name": "dumbbell lateral raise",
+            "target": "delts"
+        },
+        {
+            "bodyPart": "chest",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0025.gif",
+            "id": "0025",
+            "name": "barbell bench press",
+            "target": "pectorals"
+        },
+        {
+            "bodyPart": "upper legs",
+            "equipment": "sled machine",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0739.gif",
+            "id": "0739",
+            "name": "sled 45в° leg press",
+            "target": "glutes"
+        },
+        {
+            "bodyPart": "back",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0027.gif",
+            "id": "0027",
+            "name": "barbell bent over row",
+            "target": "upper back"
+        },
+        {
+            "bodyPart": "waist",
+            "equipment": "body weight",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0001.gif",
+            "id": "0001",
+            "name": "3/4 sit-up",
+            "target": "abs"
+        },
+        {
+            "bodyPart": "upper arms",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0031.gif",
+            "id": "0031",
+            "name": "barbell curl",
+            "target": "biceps"
+        },
+        {
+            "bodyPart": "upper arms",
+            "equipment": "cable",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1722.gif",
+            "id": "1722",
+            "name": "cable high pulley overhead tricep extension",
+            "target": "triceps"
+        },
+        {
+            "bodyPart": "lower arms",
+            "equipment": "barbell",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1411.gif",
+            "id": "1411",
+            "name": "barbell palms down wrist curl over a bench",
+            "target": "forearms"
+        },
+        {
+            "bodyPart": "back",
+            "equipment": "cable",
+            "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0818.gif",
+            "id": "0818",
+            "name": "twin handle parallel grip lat pulldown",
+            "target": "lats"
+        }
+
     ])
 
     // * get all exercises from rapid.api 
@@ -172,8 +172,11 @@ export const ExercisesProvider = ({ children }) => {
         setControl(data)
     }
 
-    function updateWorkout(){
-
+    function updateWorkout(ex, workout) {
+        const data = getWorkouts().filter((exercise) => exercise.id === workout.id)
+        data[0].workout.push(ex)
+        localStorage.setItem('workouts', JSON.stringify(data))
+        setControl(data)
     }
 
 
@@ -183,6 +186,7 @@ export const ExercisesProvider = ({ children }) => {
         <ExercisesContext.Provider value={{
             personalWorkout,
             deleteWorkout,
+            updateWorkout,
             allExercises,
             defaultIndex,
             setDefaultIndex,

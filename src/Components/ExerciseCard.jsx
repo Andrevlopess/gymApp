@@ -1,5 +1,5 @@
 import { Avatar, Badge, Box, Button, Card, CardBody, CardFooter, CardHeader, Center, Divider, Flex, Heading, Highlight, IconButton, Image, ModalOverlay, Skeleton, Text, useDisclosure } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { HiOutlineHeart } from 'react-icons/hi'
 import AddExToWorkout from './modals/AddToWorkout'
 
@@ -50,11 +50,12 @@ const ExerciseCard = ({ exercise }) => {
             onClick={() => {
               setOverlay(<OverlayOne />)
               onOpen()
+             
             }}>Add to my workout</Button>
         </CardFooter>
       </Card>
       
-      <AddExToWorkout onClose={onClose} isOpen={isOpen} overlay={overlay} />
+      <AddExToWorkout onClose={onClose} isOpen={isOpen} overlay={overlay} ex={exercise} />
     </div>
   )
 }

@@ -14,6 +14,7 @@ import NewWorkoutProvider from './Contexts/NewWorkoutContext';
 import Footer from './Layout/Footer';
 import { Toaster } from 'react-hot-toast';
 import ContactCreator from './Pages/ContactCreator';
+import LikedExercises from './Pages/LikedExercises';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/' element={<Home />}></Route>
                 <Route path='/workoutplan' element={<WorkoutPlan />}></Route>
                 <Route path='/newWorkout' element={<NewWorkout />}></Route>
+                <Route path='/likedExercises' element={<LikedExercises />}></Route>
                 <Route path='/contactCreator' element={<ContactCreator />}></Route>
                 <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
               </Routes>

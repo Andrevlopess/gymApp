@@ -31,6 +31,9 @@ const Header = () => {
             <Link to="/exercisesExamples">Exercises</Link>
           </Box>
            <Box>
+            <Link to="/likedExercises">Liked exercises</Link>
+          </Box>
+           <Box>
             <Link to="/contactCreator">Contact creator</Link>
           </Box>
         </HStack>

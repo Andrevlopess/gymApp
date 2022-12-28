@@ -1,7 +1,6 @@
 import React from 'react'
 import {
     Modal,
-    ModalOverlay,
     ModalContent,
     ModalHeader,
     ModalFooter,
@@ -9,22 +8,18 @@ import {
     ModalCloseButton,
     Button,
     Text,
-    InputGroup,
-    Input,
-    InputRightElement,
-    IconButton,
     Flex,
 } from '@chakra-ui/react'
-import { HiOutlineSearch } from 'react-icons/hi'
-import AddExCard from './AddExCard'
 import { useContext } from 'react'
-
-import { useState } from 'react'
 import { ExercisesContext } from '../../Contexts/ExercicesContext'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
-const AddExToWorkout = ({ isOpen, onClose, overlay }) => {
+const AddExToWorkout = ({ isOpen, onClose, overlay, ex }) => {
 
-    const { personalWorkout } = useContext(ExercisesContext)
+    const { personalWorkout, updateWorkout, setDefaultIndex } = useContext(ExercisesContext)
+
+    const navigate = useNavigate()
 
     return (
 
@@ -37,10 +32,37 @@ const AddExToWorkout = ({ isOpen, onClose, overlay }) => {
                 <ModalCloseButton />
                 <ModalBody>
                     <Flex flexDirection='column'>
+                        {!personalWorkout.length &&
+                            <Flex onClick={() => {
+                                navigate('/newWorkout')
+                            }}
+                                cursor='pointer'
+                                border='1px'
+                                py='10px'
+                                px='30px'
+                                borderRadius='10px'
+                                borderColor='textContrast'>
+                                <Text fontWeight={800}
+                                    color='textContrast'>Create a workout</Text>
+                            </Flex>
+                        }
                         {personalWorkout &&
                             personalWorkout.map((workout) => {
                                 return (
-                                    <Button bg='none' border='1px' w='100%' my='10px' p='30px'>
+                                    <Button bg='none' border='1px' w='100%' my='10px' p='30px'
+                                        onClick={() => {
+                                            updateWorkout(ex, workout)
+                                            onClose()
+                                            navigate('/workoutPlan')
+                                            setDefaultIndex(workout.id)
+                                            toast.success(`${ex.name} has been added to ${workout.title} workout!`,
+                                                {
+                                                    duration: 4000,
+                                                }
+                                            )
+                                        }
+                                        } key={workout.id}
+                                    >
                                         <Flex flexDirection='column' alignItems='flex-start' w='100%'>
                                             <Text fontWeight={800} my='4px'>{workout.title}</Text>
                                             <Text
@@ -55,7 +77,6 @@ const AddExToWorkout = ({ isOpen, onClose, overlay }) => {
                                     </Button>
                                 )
                             })
-
                         }
                     </Flex>
                 </ModalBody>
