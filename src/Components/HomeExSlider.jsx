@@ -2,7 +2,7 @@ import React from 'react'
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { Box } from '@chakra-ui/react';
-import HomeExercisesCard from './HomeExercisesCard';
+import HomeExercisesCard from './Cards/HomeExercisesCard';
 
 const HomeExSlider = ({ HomeEx }) => {
 

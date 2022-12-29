@@ -1,10 +1,17 @@
 import { Avatar, Badge, Box, Button, Card, CardBody, CardFooter, CardHeader, Center, Divider, Flex, Heading, Highlight, IconButton, Image, ModalOverlay, Skeleton, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { HiOutlineHeart } from 'react-icons/hi'
-import AddExToWorkout from './modals/AddToWorkout'
+import { useContext } from 'react'
+import { HiHeart, HiOutlineHeart } from 'react-icons/hi'
+import { ExercisesContext } from '../../Contexts/ExercicesContext'
+import AddExToWorkout from '../modals/AddToWorkout'
+import { useNavigate } from 'react-router-dom'
 
 const ExerciseCard = ({ exercise }) => {
 
+  const { addLikedEx } = useContext(ExercisesContext)
+  const navigate = useNavigate()
+
+  // * modal functions
   const OverlayOne = () => (
     <ModalOverlay
       bg='blackAlpha.300'
@@ -15,6 +22,19 @@ const ExerciseCard = ({ exercise }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [overlay, setOverlay] = React.useState(<OverlayOne />)
 
+  // * checkLiked function
+
+  const checkLiked = (ex) => {
+    const exercises = JSON.parse(localStorage.getItem('likedEx') || '[]')
+    const checked = exercises.filter((exercise) => exercise.id === ex.id)
+
+    if (checked.length) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   return (
     <div>
       <Card color='textDistact' boxShadow='2xl' border='1px' borderColor='gray.200' maxW='400px' >
@@ -22,7 +42,14 @@ const ExerciseCard = ({ exercise }) => {
 
           <Flex alignItems='flex-start' justifyContent='space-between' w='100%'>
             <Heading size='md' fontWeight={800}>{exercise.name}</Heading>
-            <Box m='10px' cursor='pointer'><HiOutlineHeart size={30} color='white' /></Box>
+            <Box m='10px' cursor='pointer' 
+            onClick={() => {
+              addLikedEx(exercise)
+              navigate('/likedExercises')
+              }}>
+              {checkLiked(exercise) ? <HiHeart size={30} color='#E53E3E' />
+                                    : <HiOutlineHeart size={30} color='textContrast' />}
+            </Box>
           </Flex>
 
         </CardHeader>
@@ -50,11 +77,11 @@ const ExerciseCard = ({ exercise }) => {
             onClick={() => {
               setOverlay(<OverlayOne />)
               onOpen()
-             
+
             }}>Add to my workout</Button>
         </CardFooter>
       </Card>
-      
+
       <AddExToWorkout onClose={onClose} isOpen={isOpen} overlay={overlay} ex={exercise} />
     </div>
   )

@@ -4,7 +4,7 @@ import { createContext } from "react";
 import { NewWorkoutContext } from "./NewWorkoutContext";
 import { initializeApp } from "firebase/app";
 import { exercises } from './Exercises.js'
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc, doc, updateDoc } from "firebase/firestore";
 
 
 const firebaseConfig = initializeApp({
@@ -106,6 +106,39 @@ export const ExercisesProvider = ({ children }) => {
 
     ])
 
+    // * Save on firebase functionality
+    // const salvar = () => {
+    //         async function criarDado(bodyPart, equipment, gifUrl, id, name, target, liked) {
+    //             try {
+    //                 const exercises = await addDoc(collection(db, "ExercisesList"), {
+    //                     bodyPart,
+    //                     equipment,
+    //                     gifUrl,
+    //                     id,
+    //                     name,
+    //                     target,
+    //                     liked
+    //                 });
+
+    //             } catch (e) {
+    //                 console.error("Error adding document: ", e);
+    //             }
+    //         }
+
+
+    //         allExercises.forEach(element => {
+    //             criarDado(
+    //                 element.bodyPart,
+    //                 element.equipment,
+    //                 element.gifUrl,
+    //                 element.id,
+    //                 element.name,
+    //                 element.target,
+    //                 false
+    //                 );
+    //         });
+    //     }
+
     // * get all exercises from rapid.api 
 
     // useEffect(() => {
@@ -141,16 +174,14 @@ export const ExercisesProvider = ({ children }) => {
 
     // * get exercises from firebase limit=50000/day
 
-    //  useEffect(() => {
-    //         const getUsers = async () => {
-    //               const data = await getDocs(ExercisesCollectionRef);
-    //       setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    // useEffect(() => {
+    //     const getUsers = async () => {
+    //         const data = await getDocs(ExercisesCollectionRef);
+    //         setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     //     };
+
     //     getUsers();
-
-
-    //  }, []);
-
+    // }, []);
 
     // * Save workout functions --------------------------------
     useEffect(() => {
@@ -163,6 +194,12 @@ export const ExercisesProvider = ({ children }) => {
     const getWorkouts = () => {
         const workouts = JSON.parse(localStorage.getItem('workouts') || '[]')
         return workouts
+    }
+
+    const getLikedEx = () => {
+        const exercises = JSON.parse(localStorage.getItem('likedEx') || '[]')
+
+        return exercises
     }
 
     function deleteWorkout(ex) {
@@ -179,6 +216,23 @@ export const ExercisesProvider = ({ children }) => {
         setControl(data)
     }
 
+    // TODO: check if the exercise is already liked
+    
+     function addLikedEx(ex) {
+        const exercises = getLikedEx()
+
+        const alreadyLiked = exercises.find((exercise) => ex)
+
+        ex.liked = true
+        exercises.push(ex)
+
+        localStorage.setItem('likedEx', JSON.stringify(exercises))
+
+        // const ExDoc = doc(db, "ExercisesList", ex.id);
+        // const newFields = { liked: true };
+        // await updateDoc(ExDoc, newFields);
+
+    }
 
 
 
@@ -190,6 +244,8 @@ export const ExercisesProvider = ({ children }) => {
             allExercises,
             defaultIndex,
             setDefaultIndex,
+            getLikedEx,
+            addLikedEx,
             homeEx,
         }}>
             {children}

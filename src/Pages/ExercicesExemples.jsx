@@ -2,7 +2,7 @@ import { Box, Button, Container, Flex, Heading, IconButton, Image, Input, InputG
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { HiOutlineSearch } from 'react-icons/hi'
-import ExerciseCard from '../Components/ExerciseCard'
+import ExerciseCard from '../Components/Cards/ExerciseCard'
 import Pagination from '../Components/Pagination'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
 import { FilterContext } from '../Contexts/FilterContext'
@@ -40,6 +40,7 @@ const ExercicesExemples = () => {
         setCurrentPage(1)
         setExPerPage(8)
     }
+   
 
 
     return (
@@ -113,7 +114,7 @@ const ExercicesExemples = () => {
                         {currentEx.length ?
                             currentEx.map((Ex) => {
                                 return (
-                                    <ExerciseCard exercise={Ex} key={Ex.id} />
+                                    <ExerciseCard exercise={Ex} key={Ex.id} liked={true}/>
                                 )
                             })
                             :
