@@ -32,25 +32,26 @@ const WorkoutPlan = () => {
                     </Text>
                 </Heading>
                 <Show breakpoint='(min-width: 500px)'>
-                   <Spacer/>
+                    <Spacer />
                 </Show>
                 <Box display='flex' flexWrap='wrap' alignItems='center' my='40px'>
-                    <Button colorScheme='teal'  borderRadius='40px' mr='5px' boxShadow='dark-lg'>
+                    <Button colorScheme='teal' borderRadius='40px' mr='5px' boxShadow='dark-lg'>
                         <Link to="/exercisesExamples">More exercises</Link>
                     </Button>
-                    <Button colorScheme='teal'  borderRadius='40px'boxShadow='dark-lg'>
+                    <Button colorScheme='teal' borderRadius='40px' boxShadow='dark-lg'>
                         <Link to="/newWorkout">New workout</Link>
                     </Button>
                 </Box>
             </Flex>
 
-            {personalWorkout ?
-                <WorkoutList personalWorkout={personalWorkout} />
-                :
+            {personalWorkout && <WorkoutList personalWorkout={personalWorkout} />}
+            {!personalWorkout.length &&
+
                 <Box w='100%'>
                     <Heading as='h1' size='2xl' color='textDistact' my='100px' textAlign='center'>You still dont have workouts</Heading>
                 </Box>
             }
+
 
 
         </Container>

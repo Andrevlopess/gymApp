@@ -110,11 +110,11 @@ const ExercicesExemples = () => {
                             currPage={currentPage} />
                     </Flex>
 
-                    <SimpleGrid minChildWidth='300px' spacing='10px' alignItems='flex-start'>
+                    <SimpleGrid minChildWidth='300px' spacing='10px' >
                         {currentEx.length ?
                             currentEx.map((Ex) => {
                                 return (
-                                    <ExerciseCard exercise={Ex} key={Ex.id} liked={true}/>
+                                    <ExerciseCard exercise={Ex} key={Ex.id}/>
                                 )
                             })
                             :

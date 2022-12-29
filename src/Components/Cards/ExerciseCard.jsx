@@ -5,6 +5,7 @@ import { HiHeart, HiOutlineHeart } from 'react-icons/hi'
 import { ExercisesContext } from '../../Contexts/ExercicesContext'
 import AddExToWorkout from '../modals/AddToWorkout'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const ExerciseCard = ({ exercise }) => {
 
@@ -21,44 +22,57 @@ const ExerciseCard = ({ exercise }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [overlay, setOverlay] = React.useState(<OverlayOne />)
+  const [checkLike, setCheckLike] = useState()
 
   // * checkLiked function
 
+
   const checkLiked = (ex) => {
-    const exercises = JSON.parse(localStorage.getItem('likedEx') || '[]')
-    const checked = exercises.filter((exercise) => exercise.id === ex.id)
+    const likedExercises = JSON.parse(localStorage.getItem('likedEx') || '[]')
+    const checked = likedExercises.filter((exercise) => exercise.id === ex.id)
 
     if (checked.length) {
-      return true
+      setCheckLike(true)
     } else {
-      return false
+      setCheckLike(false)
     }
   }
 
+  useEffect(() => { checkLiked(exercise) }, [])
+
+
+
+
+
+
   return (
     <div>
-      <Card color='textDistact' boxShadow='2xl' border='1px' borderColor='gray.200' maxW='400px' >
-        <CardHeader display='flex' justifyContent='space-between' alignItems='flex-start'>
+      <Card color='textDistact' maxW='400px' bgColor='layoutBg' boxShadow='2xl'>
+        <CardHeader>
 
-          <Flex alignItems='flex-start' justifyContent='space-between' w='100%'>
-            <Heading size='md' fontWeight={800}>{exercise.name}</Heading>
-            <Box m='10px' cursor='pointer' 
-            onClick={() => {
-              addLikedEx(exercise)
-              navigate('/likedExercises')
-              }}>
-              {checkLiked(exercise) ? <HiHeart size={30} color='#E53E3E' />
-                                    : <HiOutlineHeart size={30} color='textContrast' />}
-            </Box>
-          </Flex>
+          {exercise.gifUrl &&
+            <Image src={exercise.gifUrl} minW='100px' objectFit='cover' borderRadius='4px'/>
+          }
 
         </CardHeader>
         <CardBody>
+          <Flex alignItems='Center' justifyContent='space-between' w='100%'>
 
+            <Heading size='md' fontWeight={800}>
+              {exercise.name[0].toUpperCase() + exercise.name.substring(1)}
+            </Heading>
+
+            <Box m='10px' cursor='pointer'
+              onClick={() => {
+                addLikedEx(exercise)
+                checkLiked(exercise)
+              }}>
+              {checkLike ? <HiHeart size={30} color='#E53E3E' />
+                :          <HiOutlineHeart size={30} color='#EEEEEE' />}
+            </Box>
+          </Flex>
         </CardBody>
-        {exercise.gifUrl &&
-          <Image src={exercise.gifUrl} minW='100px' objectFit='cover' />
-        }
+
 
         <CardFooter display='flex' justifyContent='space-evenly' alignItems='center' flexDirection='column'>
           <Flex w='100%' justifyContent='space-around' alignItems='center'>
@@ -73,7 +87,7 @@ const ExerciseCard = ({ exercise }) => {
             </Center>
           </Flex>
           <Divider orientation='horizontal' my='20px' />
-          <Button bg='none' border='1px' color='textContrast' w='100%'
+          <Button bgColor='footerBg' color='textContrast' w='100%'
             onClick={() => {
               setOverlay(<OverlayOne />)
               onOpen()

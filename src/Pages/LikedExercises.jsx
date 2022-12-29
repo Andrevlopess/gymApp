@@ -1,7 +1,8 @@
-import { Button, Container, Flex, Wrap } from '@chakra-ui/react'
+import { Button, Container, Flex, SimpleGrid, Wrap } from '@chakra-ui/react'
 import React from 'react'
 import { useContext } from 'react'
 import ExerciseCard from '../Components/Cards/ExerciseCard'
+import LikedExCard from '../Components/Cards/LikedExCard'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
 
 const LikedExercises = () => {
@@ -13,16 +14,16 @@ const LikedExercises = () => {
 
   return (
     <Container maxW='none' w='100%' bgColor='layoutBg'>
-      <Wrap>
+      <SimpleGrid>
         {
           LikedList.map((exercise) => {
             return (
-              <ExerciseCard exercise={exercise} liked={true}/>
+              <LikedExCard/>
             )
           })
         }
 
-      </Wrap>
+      </SimpleGrid>
     </Container>
   )
 }

@@ -106,6 +106,8 @@ export const ExercisesProvider = ({ children }) => {
 
     ])
 
+    // TODO: SAVE ALL THE EXERCISES WITH THE FIRST LETTER ON UPPER CASE
+    
     // * Save on firebase functionality
     // const salvar = () => {
     //         async function criarDado(bodyPart, equipment, gifUrl, id, name, target, liked) {
@@ -197,9 +199,8 @@ export const ExercisesProvider = ({ children }) => {
     }
 
     const getLikedEx = () => {
-        const exercises = JSON.parse(localStorage.getItem('likedEx') || '[]')
-
-        return exercises
+        const likedExercises = JSON.parse(localStorage.getItem('likedEx') || '[]')
+        return likedExercises
     }
 
     function deleteWorkout(ex) {
@@ -217,24 +218,28 @@ export const ExercisesProvider = ({ children }) => {
     }
 
     // TODO: check if the exercise is already liked
-    
-     function addLikedEx(ex) {
-        const exercises = getLikedEx()
 
-        const alreadyLiked = exercises.find((exercise) => ex)
+    function addLikedEx(ex) {
+        const likedExercises = getLikedEx()
 
-        ex.liked = true
-        exercises.push(ex)
+        const alreadyLiked = likedExercises.filter((exercise) => exercise.id === ex.id)
 
-        localStorage.setItem('likedEx', JSON.stringify(exercises))
+        if (!alreadyLiked.length) {
+          
+            ex.liked = true
+            likedExercises.push(ex)
+            localStorage.setItem('likedEx', JSON.stringify(likedExercises))
 
-        // const ExDoc = doc(db, "ExercisesList", ex.id);
-        // const newFields = { liked: true };
-        // await updateDoc(ExDoc, newFields);
+        }else if(alreadyLiked.length){
+           
+            const removeLikedEx = getLikedEx().filter((exercise) => exercise.id !== ex.id)
 
+            localStorage.setItem('likedEx', JSON.stringify(removeLikedEx))
+        }
     }
 
 
+    
 
     return (
         <ExercisesContext.Provider value={{
