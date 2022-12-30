@@ -25,7 +25,8 @@ function App() {
         <NewWorkoutProvider>
           <ExercisesProvider>
             <FilterProvider>
-              <Toaster />
+              <Toaster position="bottom-center"
+                reverseOrder={true} />
               <Header />
               <Routes>
                 <Route path='/' element={<Home />}></Route>
