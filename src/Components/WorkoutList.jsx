@@ -19,9 +19,9 @@ import { useContext } from 'react'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
 import { useNavigate } from 'react-router-dom'
 
-const WorkoutList = ({ personalWorkout }) => {
+const WorkoutList = () => {
 
-    const { deleteWorkout, defaultIndex } = useContext(ExercisesContext)
+    const { deleteWorkout, defaultIndex, personalWorkout } = useContext(ExercisesContext)
 
     const navigate = useNavigate()
 

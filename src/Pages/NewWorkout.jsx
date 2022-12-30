@@ -18,6 +18,8 @@ import {
     ModalOverlay,
     Button,
     Image,
+    Text,
+    Flex,
 } from '@chakra-ui/react'
 import React from 'react'
 import { useContext } from 'react'
@@ -35,6 +37,7 @@ const NewWorkout = () => {
         changeDescription,
         createWorkout,
         workoutTitle,
+        getWorkouts,
         removeExTable } = useContext(NewWorkoutContext)
 
     const OverlayOne = () => (
@@ -47,13 +50,21 @@ const NewWorkout = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [overlay, setOverlay] = React.useState(<OverlayOne />)
 
+
+
     function handleCreateWorkout() {
 
+        const alreadyExists = getWorkouts().filter((workouts) => workouts.title === workoutTitle)
+
         if (exTable.length > 0 && workoutTitle) {
-            createWorkout(exTable)
-            toast.success("Your new workout was saved!")
-        }else{
-            toast.error("Check your workout again!")
+            if (!alreadyExists.length) {
+                createWorkout(exTable)
+                toast.success("Your new workout was saved!")
+            } else {
+                toast.error(`You already have a "${workoutTitle}" workout`, { duration: 5000 })
+            }
+        } else {
+                toast.error(`Add at least one exercise to your workout`, { duration: 5000 })  
         }
 
     }
@@ -124,9 +135,9 @@ const NewWorkout = () => {
                                                     <Td><Image src={exercise.gifUrl} boxSize="100px" minW='100px' /></Td>
                                                     <Td>
                                                         <BsTrash
-                                                        size={25}
-                                                        color='#E53E3E'
-                                                        onClick={() => removeExTable(exercise)} /></Td>
+                                                            size={25}
+                                                            color='#E53E3E'
+                                                            onClick={() => removeExTable(exercise)} /></Td>
                                                 </Tr>
                                             )
                                         })

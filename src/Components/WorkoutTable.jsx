@@ -58,8 +58,8 @@ const WorkoutTable = ({ target }) => {
                     {target.workout ?
                         target.workout.map((ex) => {
                             return (
-                                <Tr key={ex.id}>
-                                    <Td>{ex.name}</Td>
+                                <Tr key={ex.id} _hover={{bgColor: 'homeDistactBg'}} >
+                                    <Td >{ex.name}</Td>
                                     <Td>{ex.target}</Td>
                                     <Td><Image src={ex.gifUrl} boxSize="100px" minW='100px' /></Td>
                                     <Td>{ex.sets_reps ? ex.sets_reps : '--/--'}</Td>

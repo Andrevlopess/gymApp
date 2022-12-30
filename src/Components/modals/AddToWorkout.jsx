@@ -54,12 +54,7 @@ const AddExToWorkout = ({ isOpen, onClose, overlay, ex }) => {
                                             updateWorkout(ex, workout)
                                             onClose()
                                             navigate('/workoutPlan')
-                                            setDefaultIndex(workout.id)
-                                            toast.success(`${ex.name} has been added to ${workout.title} workout!`,
-                                                {
-                                                    duration: 4000,
-                                                }
-                                            )
+                                            setDefaultIndex(personalWorkout.indexOf(workout))
                                         }
                                         } key={workout.id}
                                     >

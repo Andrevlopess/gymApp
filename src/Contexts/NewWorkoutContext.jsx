@@ -23,6 +23,9 @@ function NewWorkoutProvider({ children }) {
 
     
 
+    const randomId = () => {
+        return Date.now()
+    }
     const createWorkout = (workout) => {
 
         const datas = getWorkouts()
@@ -31,7 +34,7 @@ function NewWorkoutProvider({ children }) {
             {
                 title: workoutTitle,
                 description: description,
-                id: datas.length,
+                id: randomId(),
                 workout: workout
             }
             )
@@ -69,6 +72,7 @@ function NewWorkoutProvider({ children }) {
             changeDescription,
             createWorkout,
             removeExTable,
+            getWorkouts,
             workoutTitle,
             exTable,
             workout

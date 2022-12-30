@@ -47,7 +47,7 @@ const ExerciseCard = ({ exercise }) => {
 
   return (
     <div>
-      <Card color='textDistact' maxW='400px' bgColor='layoutBg' boxShadow='2xl'>
+      <Card color='textDistact' maxW='400px' bgColor='layoutBg' boxShadow='dark-lg'>
         <CardHeader>
 
           {exercise.gifUrl &&

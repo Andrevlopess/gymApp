@@ -5,6 +5,7 @@ import { NewWorkoutContext } from "./NewWorkoutContext";
 import { initializeApp } from "firebase/app";
 import { exercises } from './Exercises.js'
 import { getFirestore, collection, getDocs, addDoc, doc, updateDoc } from "firebase/firestore";
+import { toast } from "react-hot-toast";
 
 
 const firebaseConfig = initializeApp({
@@ -106,7 +107,7 @@ export const ExercisesProvider = ({ children }) => {
 
     ])
 
-    
+
     // * Save on firebase functionality
     // const salvar = () => {
     //         async function criarDado(bodyPart, equipment, gifUrl, id, name, target, liked) {
@@ -210,10 +211,31 @@ export const ExercisesProvider = ({ children }) => {
     }
 
     function updateWorkout(ex, workout) {
-        const data = getWorkouts().filter((exercise) => exercise.id === workout.id)
-        data[0].workout.push(ex)
-        localStorage.setItem('workouts', JSON.stringify(data))
-        setControl(data)
+        const data = getWorkouts().filter((wkt) => wkt.id !== workout.id)
+
+        if (workout.workout.filter((exer) => exer.id === ex.id)) {
+
+            toast.error(`${ex.name} already exists in ${workout.title}`,{duration: 4000})
+
+        } else {
+
+            workout.workout.push(ex)
+            data.push({
+                ...workout,
+            })
+
+
+            localStorage.setItem('workouts', JSON.stringify(data))
+            setControl(data)
+
+            toast.success(`${ex.name} has been added to ${workout.title} workout!`,
+                {
+                    duration: 4000,
+                }
+            )
+        }
+
+
     }
 
 
@@ -223,26 +245,26 @@ export const ExercisesProvider = ({ children }) => {
         const alreadyLiked = likedExercises.filter((exercise) => exercise.id === ex.id)
 
         if (!alreadyLiked.length) {
-          
+
             ex.liked = true
             likedExercises.push(ex)
             localStorage.setItem('likedEx', JSON.stringify(likedExercises))
 
-        }else if(alreadyLiked.length){
-           
+        } else if (alreadyLiked.length) {
+
             const removeLikedEx = getLikedEx().filter((exercise) => exercise.id !== ex.id)
 
             localStorage.setItem('likedEx', JSON.stringify(removeLikedEx))
         }
     }
 
-    function removeLikedEx(ex){
+    function removeLikedEx(ex) {
         const removeLikedEx = getLikedEx().filter((exercise) => exercise.id !== ex.id)
 
         localStorage.setItem('likedEx', JSON.stringify(removeLikedEx))
     }
 
-    
+
 
     return (
         <ExercisesContext.Provider value={{
