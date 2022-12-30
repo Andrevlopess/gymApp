@@ -13,8 +13,6 @@ const ExercicesExemples = () => {
 
     const { allExercises } = useContext(ExercisesContext)
 
-    
-
     const {
         setSearch,
         searchedEx,
@@ -87,7 +85,7 @@ const ExercicesExemples = () => {
                 <Box w='100%'
                     m='30px'
                     mt='50px'>
-                    <Flex alignItems='center' justifyContent='center' mb='20px'>
+                    <Flex alignItems='center' justifyContent='flex-end' mb='20px' flexWrap='wrap-reverse'>
                         {searchedEx &&
                             <Tag
                                 borderRadius='full'
@@ -95,6 +93,7 @@ const ExercicesExemples = () => {
                                 colorScheme='teal'
                                 py='8px'
                                 px='15px'
+                                mt='10px'
                             >
                                 <TagLabel>{title}</TagLabel>
                                 <TagCloseButton onClick={() => { removeSearch() }} />

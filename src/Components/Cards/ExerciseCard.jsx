@@ -22,10 +22,10 @@ const ExerciseCard = ({ exercise }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [overlay, setOverlay] = React.useState(<OverlayOne />)
-  const [checkLike, setCheckLike] = useState()
-
+  
   // * checkLiked function
-
+  
+  const [checkLike, setCheckLike] = useState()
 
   const checkLiked = (ex) => {
     const likedExercises = JSON.parse(localStorage.getItem('likedEx') || '[]')
@@ -77,13 +77,13 @@ const ExerciseCard = ({ exercise }) => {
         <CardFooter display='flex' justifyContent='space-evenly' alignItems='center' flexDirection='column'>
           <Flex w='100%' justifyContent='space-around' alignItems='center'>
             <Center border='1px' color='textContrast' borderRadius='10px' py='5px' px='15px'>
-              {exercise.equipment}
+            {exercise.equipment[0].toUpperCase() + exercise.equipment.substring(1)}
             </Center>
 
             <Divider orientation='vertical' h='25px' />
 
             <Center border='1px' color='textContrast' borderRadius='10px' py='5px' px='15px'>
-              {exercise.target}
+            {exercise.target[0].toUpperCase() + exercise.target.substring(1)}
             </Center>
           </Flex>
           <Divider orientation='horizontal' my='20px' />

@@ -106,7 +106,6 @@ export const ExercisesProvider = ({ children }) => {
 
     ])
 
-    // TODO: SAVE ALL THE EXERCISES WITH THE FIRST LETTER ON UPPER CASE
     
     // * Save on firebase functionality
     // const salvar = () => {
@@ -217,7 +216,6 @@ export const ExercisesProvider = ({ children }) => {
         setControl(data)
     }
 
-    // TODO: check if the exercise is already liked
 
     function addLikedEx(ex) {
         const likedExercises = getLikedEx()
@@ -238,6 +236,11 @@ export const ExercisesProvider = ({ children }) => {
         }
     }
 
+    function removeLikedEx(ex){
+        const removeLikedEx = getLikedEx().filter((exercise) => exercise.id !== ex.id)
+
+        localStorage.setItem('likedEx', JSON.stringify(removeLikedEx))
+    }
 
     
 
@@ -251,6 +254,7 @@ export const ExercisesProvider = ({ children }) => {
             setDefaultIndex,
             getLikedEx,
             addLikedEx,
+            removeLikedEx,
             homeEx,
         }}>
             {children}
