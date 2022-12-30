@@ -49,18 +49,21 @@ const LikedExCard = ({ exercise, upPage }) => {
                             </Box>
                         </Flex>
 
-                        <Text color='grey' display='flex' my='10px'>
-                            Muscle target:
-                            <Text color='textContrast' ml='6px'>{`${exercise.target[0].toUpperCase() + exercise.target.substring(1)}`}</Text>
-                        </Text>
-                        <Text color='grey' display='flex' my='10px'>
-                            Body Part:
-                            <Text color='textContrast' ml='6px'>{`${exercise.bodyPart[0].toUpperCase() + exercise.bodyPart.substring(1)}`}</Text>
-                        </Text>
-                        <Text color='grey' display='flex' my='10px'>
-                            Equipment:
-                            <Text color='textContrast' ml='6px'>{`${exercise.equipment[0].toUpperCase() + exercise.equipment.substring(1)}`}</Text>
-                        </Text>
+                        <Box mt='10px' p='10px' borderRadius='5px' bgColor='homeDistactBg'>
+                            <Text color='grey' display='flex' my='10px'>
+                                Muscle target:
+                                <Text color='textContrast' ml='6px'>{`${exercise.target[0].toUpperCase() + exercise.target.substring(1)}`}</Text>
+                            </Text>
+                            <Text color='grey' display='flex' my='10px'>
+                                Body Part:
+                                <Text color='textContrast' ml='6px'>{`${exercise.bodyPart[0].toUpperCase() + exercise.bodyPart.substring(1)}`}</Text>
+                            </Text>
+                            <Text color='grey' display='flex' my='10px'>
+                                Equipment:
+                                <Text color='textContrast' ml='6px'>{`${exercise.equipment[0].toUpperCase() + exercise.equipment.substring(1)}`}</Text>
+                            </Text>
+                        </Box>
+
                     </CardBody>
 
                     <CardFooter>

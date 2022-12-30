@@ -6,8 +6,7 @@ import ExerciseCard from '../Components/Cards/ExerciseCard'
 import Pagination from '../Components/Pagination'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
 import { FilterContext } from '../Contexts/FilterContext'
-import PropagateLoader from "react-spinners/PropagateLoader";
-import AddExToWorkout from '../Components/modals/AddToWorkout'
+
 
 const ExercicesExemples = () => {
 
@@ -38,8 +37,6 @@ const ExercicesExemples = () => {
         setCurrentPage(1)
         setExPerPage(8)
     }
-   
-
 
     return (
         <Container
@@ -109,35 +106,34 @@ const ExercicesExemples = () => {
                             currPage={currentPage} />
                     </Flex>
 
-                    <SimpleGrid minChildWidth='300px' spacing='10px' >
-                        {currentEx.length ?
-                            currentEx.map((Ex) => {
-                                return (
-                                    <ExerciseCard exercise={Ex} key={Ex.id}/>
-                                )
-                            })
-                            :
-                            <Flex justifyContent='center' alignItems='center' h='40vh'>
-                                <PropagateLoader
-                                    color='#00ADB5'
-                                    loading={true}
-                                    size={25}
-                                    aria-label="Loading Spinner"
-                                    data-testid="loader"
-                                />
+                    {currentEx &&
+                        <SimpleGrid minChildWidth='300px' spacing='10px' >
+                            {
+                                currentEx.map((Ex) => {
+                                    return (
+                                        <ExerciseCard exercise={Ex} key={Ex.id} />
+                                    )
+                                })
+                            }
+
+                        </SimpleGrid>
+                    }
+                    {!currentEx.length &&
+                        <Flex justifyContent='center' alignItems='center' h='40vh'>
+                            <Heading color='textContrast'>{`Sorry, we don't have "${title}" yet.`}</Heading>
+                        </Flex>}
+
+                    {!!currentEx.length &&
+                        <Show breakpoint='(max-width: 500px)'>
+                            <Flex justifyContent='center' mt='30px' >
+                                <Pagination totalEx={searchedEx ? searchedEx.length : allExercises.length}
+                                    exPerPage={exPerPage}
+                                    setCurrentPage={setCurrentPage}
+                                    currPage={currentPage} />
                             </Flex>
-                        }
-                    </SimpleGrid>
 
-                    <Show breakpoint='(max-width: 500px)'>
-                        <Flex justifyContent='center' mt='30px' >
-                            <Pagination totalEx={searchedEx ? searchedEx.length : allExercises.length}
-                                exPerPage={exPerPage}
-                                setCurrentPage={setCurrentPage}
-                                currPage={currentPage} />
-                        </Flex>
+                        </Show>}
 
-                    </Show>
                 </Box>
             </Box>
         </Container>

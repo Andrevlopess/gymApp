@@ -1,4 +1,4 @@
-import { Box, Button, Center, Container, Flex, Heading, Link, SimpleGrid, Spacer, Text, Wrap, WrapItem } from '@chakra-ui/react'
+import { Box, Button, Center, Container, Flex, Heading, Link, Show, SimpleGrid, Spacer, Text, Wrap, WrapItem } from '@chakra-ui/react'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -35,14 +35,16 @@ const LikedExercises = () => {
 
   return (
     <Container maxW='none' w='100%' bgColor='layoutBg'>
-      <Flex py='30px' ml='30px' alignItems='center'>
+      <Flex py='30px' alignItems='center' flexWrap='wrap' justifyContent='center' w='100%'>
         <Heading as='h1' fontSize='4em' color='textDistact' display='flex' alignItems='flex-end' my='10px'>
           Liked Exercises
           <Text fontSize='40%' color='grey' ml='10px'>
             {`(${likedList.length})`}
           </Text>
         </Heading>
-        <Spacer />
+        <Show breakpoint='(min-width: 500px)'>
+          <Spacer />
+        </Show>
         <Pagination
           totalEx={likedList.length}
           exPerPage={exPerPage}
@@ -62,13 +64,21 @@ const LikedExercises = () => {
           })
         }
         {!currentEx.length &&
-          <Center w='100%' h='60vh'>
-            <Heading color='textDistact' display='flex' alignItems='center'>
+          <Flex w='100%' h='60vh' flexDirection='column' justifyContent='center' alignItems='center'>
+            <Heading fontSize='3em' color='textContrast' display='flex' alignItems='center'>
               Like your exercises right now!
-              <Button onClick={() => navigate('/exercisesExamples')}></Button>
-             
             </Heading>
-          </Center>
+            <Button onClick={() => navigate('/exercisesExamples')}
+              color='textContrast'
+              px='20px'
+              my='20px'
+              bgGradient='linear(to-r, teal.500, green.500)'
+              _hover={'none'}
+              _active={'none'}
+
+            >
+              See all exercises</Button>
+          </Flex>
         }
 
       </Flex>

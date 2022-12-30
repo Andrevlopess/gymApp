@@ -4,7 +4,6 @@ import { useContext } from 'react'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
 import dumbell from '../Icons/dumbell.png'
-import gym from '../Icons/gym.png'
 import { useNavigate } from 'react-router-dom'
 import HomeExSlider from '../Components/HomeExSlider'
 

@@ -45,24 +45,27 @@ const DrawerHome = () => {
 
           <DrawerBody>
             <VStack
-              spacing='1em'
+              spacing='2em'
               display='flex'
               justifyContent='flex-start'
               align='flex-start'
               mt='30px'
               fontSize='lg'>
-              <Box onClick={onClose} >
+              <Box onClick={onClose} bgColor='homeDistactBg' p='15px' borderRadius='5px' w='100%'>
                 <Link to="/workoutPlan">My workout</Link>
               </Box>
-              <Box onClick={onClose} >
+              <Box onClick={onClose} bgColor='homeDistactBg' p='15px' borderRadius='5px' w='100%'>
                 <Link to="/exercisesExamples">Exercises</Link>
+              </Box>
+              <Box onClick={onClose} bgColor='homeDistactBg' p='15px' borderRadius='5px' w='100%'>
+                <Link to="/likedExercises">Liked Exercises</Link>
               </Box>
 
             </VStack>
 
           </DrawerBody>
           <DrawerFooter display='flex' justifyContent='flex-start'>
-            <Box onClick={onClose} my='18px'>
+            <Box onClick={onClose} my='18px' bgColor='homeDistactBg' p='15px' borderRadius='5px' w='100%'>
               <Link to="/contactCreator">Contact creator</Link>
             </Box>
           </DrawerFooter>

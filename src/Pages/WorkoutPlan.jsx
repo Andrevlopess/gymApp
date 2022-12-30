@@ -1,7 +1,6 @@
 import { Box, Button, Container, Flex, Heading, Show, Spacer, Text } from '@chakra-ui/react'
 import React from 'react'
 import { useContext } from 'react'
-import { toast } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import WorkoutList from '../Components/WorkoutList'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
