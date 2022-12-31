@@ -16,7 +16,8 @@ const Header = () => {
       alignItems="center"
       justifyContent='space-between'
       bg="layoutBg"
-      px='30px'>
+      px='30px'
+      >
 
 
         <Link to="/"><Image src={Logo} boxSize='4em'/></Link>

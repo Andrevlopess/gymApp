@@ -13,6 +13,7 @@ import {
     Input,
     InputRightElement,
     IconButton,
+    SimpleGrid,
 } from '@chakra-ui/react'
 import { HiOutlineSearch } from 'react-icons/hi'
 import AddExCard from './AddExCard'
@@ -46,9 +47,9 @@ const AddExModal = ({ isOpen, onClose, overlay }) => {
 
     return (
 
-        <Modal isCentered isOpen={isOpen} onClose={onClose} size='4xl' scrollBehavior='inside'>
+        <Modal isOpen={isOpen} onClose={onClose} size='4xl' scrollBehavior='outside' >
             {overlay}
-            <ModalContent bgColor='compBg' color='textContrast'>
+            <ModalContent bgColor='layoutBg' color='textContrast'>
                 <ModalHeader color='textDistact'>
                     <Text>Add exercise</Text>
                     <InputGroup my='10px'>
@@ -71,13 +72,16 @@ const AddExModal = ({ isOpen, onClose, overlay }) => {
                 </ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    {searchEx ?
-                        searchEx.map((ex) => {
-                            return <AddExCard exercise={ex} close={onClose} key={ex.id} />
+                    <SimpleGrid  minChildWidth='300px' spacing='10px'>
+                        {searchEx ?
+                            searchEx.map((ex) => {
+                                return <AddExCard exercise={ex} close={onClose} key={ex.id} />
 
-                        })
-                        :  <h3 style={{ textAlign: 'center' }}>Search for an Exercise</h3>
-                    }
+                            })
+                            : <h3 style={{ textAlign: 'center' }}>Search for an Exercise</h3>
+                        }
+                    </SimpleGrid>
+
                 </ModalBody>
                 <ModalFooter>
 

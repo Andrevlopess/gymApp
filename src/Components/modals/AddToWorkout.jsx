@@ -23,7 +23,7 @@ const AddExToWorkout = ({ isOpen, onClose, overlay, ex }) => {
 
     return (
 
-        <Modal isCentered isOpen={isOpen} onClose={onClose} size='xs' scrollBehavior='inside' >
+        <Modal isOpen={isOpen} onClose={onClose} size='xs' scrollBehavior='outside' >
             {overlay}
             <ModalContent bgColor='compBg' color='textContrast'>
                 <ModalHeader color='textDistact' fontWeight={800}>
@@ -49,7 +49,7 @@ const AddExToWorkout = ({ isOpen, onClose, overlay, ex }) => {
                         {personalWorkout &&
                             personalWorkout.map((workout) => {
                                 return (
-                                    <Button bg='none' border='1px' w='100%' my='10px' p='30px'
+                                    <Flex bg='none' border='1px' w='100%' my='10px' p='10px' borderRadius='10px' flexDirection='column' _hover={{ bgColor: 'homeDistactBg' }}
                                         onClick={() => {
                                             updateWorkout(ex, workout)
                                             onClose()
@@ -58,18 +58,16 @@ const AddExToWorkout = ({ isOpen, onClose, overlay, ex }) => {
                                         }
                                         } key={workout.id}
                                     >
-                                        <Flex flexDirection='column' alignItems='flex-start' w='100%'>
-                                            <Text fontWeight={800} my='4px'>{workout.title}</Text>
-                                            <Text
-                                                fontWeight={800}
-                                                color='grey'
-                                                as='i'>
-                                                {workout.description ? `"${workout.description}"` : null}
-                                            </Text>
-                                        </Flex>
+                                        <Text fontWeight={800} my='4px' fontSize='1.1em'>{workout.title}</Text>
+                                        <Text
+                                            fontWeight={800}
+                                            color='grey'
+                                            as='i'>
+                                            {workout.description ? `"${workout.description}"` : null}
+                                        </Text>
+                                    </Flex>
 
 
-                                    </Button>
                                 )
                             })
                         }

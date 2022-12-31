@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Highlight, Image, Show, Text } from '@chakra-ui/react'
+import { Badge, Box, Button, Divider, Flex, Highlight, Image, Show, Text } from '@chakra-ui/react'
 import React from 'react'
 import { useContext } from 'react'
 import { NewWorkoutContext } from '../../Contexts/NewWorkoutContext'
@@ -13,45 +13,33 @@ const AddExCard = ({ exercise, close }) => {
     }
 
     return (
-        <Box borderBottom='2px'
+        <Flex borderBottomWidth='4px'
             borderColor='textDistact'
-            w='100%'
-            display='flex'
+            flexDirection='column'
             alignItems='center'
-            justifyContent='space-between'
+            justifyContent='center'
             flexWrap='wrap'
             px='5px'
             py='10px'
         >
-            <Box display='flex' justifyContent='space-between' alignItems='center'>
-                <Button variant='outline' onClick={handleAddEx}>Add</Button>
+            <Flex justifyContent='space-between' alignItems='center' mb='20px' bgColor='homeDistactBg' p='10px' borderRadius='5px'>
 
-                <Text mx='30px' fontSize='1em'>{exercise.name}</Text>
+                <Text mx='30px' fontSize='1em' color='textDistact' fontWeight={800}>
+                    {exercise.name[0].toUpperCase() + exercise.name.substring(1)}
+                </Text>
 
-            </Box>
-            <Box display='flex' justifyContent='space-between' alignItems='center' w='100%' maxW='350px'>
-                <Highlight
-                    query={exercise.bodyPart}
-                    styles={{ px: '4', py: '1', bg: 'lightBlue', borderRadius: '50px' }}
-                >
-                    {exercise.bodyPart}
-                </Highlight>
-                <Divider orientation='vertical' h='25px' />
-                <Highlight
-                    query={exercise.target}
-                    styles={{ px: '4', py: '1', bg: 'lightBlue', borderRadius: '50px' }}
-                >
+                <Badge variant='solid' colorScheme='teal'>
                     {exercise.target}
-                </Highlight>
-                <Divider orientation='vertical' h='25px' />
-                <Image src={exercise.gifUrl} h='70px' />
+                </Badge>
+            </Flex>
+
+            <Image src={exercise.gifUrl} h='200px' />
+
+            <Button variant='outline' onClick={handleAddEx} w='100%' my='10px'>Add</Button>
 
 
-            </Box>
 
-
-
-        </Box>
+        </Flex>
     )
 }
 

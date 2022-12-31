@@ -3,9 +3,9 @@ import React from 'react'
 import { useContext } from 'react'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
-import dumbell from '../Icons/dumbell.png'
 import { useNavigate } from 'react-router-dom'
 import HomeExSlider from '../Components/HomeExSlider'
+import { useParallax } from 'react-scroll-parallax'
 
 const Home = () => {
 
@@ -19,7 +19,6 @@ const Home = () => {
         overflow='hidden'>
         <Heading size='4xl' fontWeight={800} color='textDistact' mb='25px'
         >Create your own workout!</Heading>
-        <Image src={dumbell} position='absolute' right='-10' h='18vw' />
         <Button py='20px' px='40px' mt='35px' bgColor='textDistact' color='textContrast'
           boxShadow='dark-lg'
           onClick={() => navigate('/workoutPlan')}>
@@ -110,9 +109,6 @@ const Home = () => {
             }
           </Wrap>
         </Box>
-
-
-
       </Flex>
 
     </Container>

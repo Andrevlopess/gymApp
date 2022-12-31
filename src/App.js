@@ -15,6 +15,7 @@ import Footer from './Layout/Footer';
 import { Toaster } from 'react-hot-toast';
 import ContactCreator from './Pages/ContactCreator';
 import LikedExercises from './Pages/LikedExercises';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 function App() {
 
@@ -22,24 +23,27 @@ function App() {
   return (
     <Router>
       <ChakraProvider theme={originTheme}>
-        <NewWorkoutProvider>
-          <ExercisesProvider>
-            <FilterProvider>
-              <Toaster position="bottom-center"
-                reverseOrder={true} />
-              <Header />
-              <Routes>
-                <Route path='/' element={<Home />}></Route>
-                <Route path='/workoutplan' element={<WorkoutPlan />}></Route>
-                <Route path='/newWorkout' element={<NewWorkout />}></Route>
-                <Route path='/likedExercises' element={<LikedExercises />}></Route>
-                <Route path='/contactCreator' element={<ContactCreator />}></Route>
-                <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
-              </Routes>
-              <Footer />
-            </FilterProvider>
-          </ExercisesProvider>
-        </NewWorkoutProvider>
+        <ParallaxProvider>
+
+          <NewWorkoutProvider>
+            <ExercisesProvider>
+              <FilterProvider>
+                <Toaster position="bottom-center"
+                  reverseOrder={true} />
+                <Header />
+                <Routes>
+                  <Route path='/' element={<Home />}></Route>
+                  <Route path='/workoutplan' element={<WorkoutPlan />}></Route>
+                  <Route path='/newWorkout' element={<NewWorkout />}></Route>
+                  <Route path='/likedExercises' element={<LikedExercises />}></Route>
+                  <Route path='/contactCreator' element={<ContactCreator />}></Route>
+                  <Route path='/exercisesExamples' element={<ExercicesExemples />}></Route>
+                </Routes>
+                <Footer />
+              </FilterProvider>
+            </ExercisesProvider>
+          </NewWorkoutProvider>
+        </ParallaxProvider>
       </ChakraProvider>
     </Router>
   );

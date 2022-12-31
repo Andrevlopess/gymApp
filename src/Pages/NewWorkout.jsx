@@ -20,6 +20,16 @@ import {
     Image,
     Text,
     Flex,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
+    PopoverAnchor,
+    Portal,
 } from '@chakra-ui/react'
 import React from 'react'
 import { useContext } from 'react'
@@ -64,7 +74,7 @@ const NewWorkout = () => {
                 toast.error(`You already have a "${workoutTitle}" workout`, { duration: 5000 })
             }
         } else {
-                toast.error(`Add at least one exercise to your workout`, { duration: 5000 })  
+            toast.error(`Add at least one exercise to your workout`, { duration: 5000 })
         }
 
     }
@@ -134,10 +144,27 @@ const NewWorkout = () => {
                                                     </Td>
                                                     <Td><Image src={exercise.gifUrl} boxSize="100px" minW='100px' /></Td>
                                                     <Td>
-                                                        <BsTrash
-                                                            size={25}
-                                                            color='#E53E3E'
-                                                            onClick={() => removeExTable(exercise)} /></Td>
+                                                        <Popover placement='left-start'>
+                                                            <PopoverTrigger>
+                                                                <Button bg='none' _hover={'none'} _active={'none'} border='none'>
+                                                                    <BsTrash
+                                                                        size={25}
+                                                                        color='#E53E3E'
+                                                             />
+                                                               </Button>
+                                                            </PopoverTrigger>
+                                                            <PopoverContent bgColor='layoutBg' border='none'>
+                                                                <PopoverArrow />
+                                                                <PopoverHeader>Remove Confirm </PopoverHeader>
+                                                                <PopoverCloseButton />
+                                                                <PopoverBody>
+                                                                    <Button colorScheme='red' w='100%'
+                                                                    variant='outline' _hover={'none'}
+                                                                    onClick={() => removeExTable(exercise)}
+                                                                    >Remove</Button>
+                                                                </PopoverBody>
+                                                            </PopoverContent>
+                                                        </Popover></Td>
                                                 </Tr>
                                             )
                                         })
