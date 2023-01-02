@@ -6,6 +6,7 @@ import { ExercisesContext } from '../../Contexts/ExercicesContext'
 import AddExToWorkout from '../modals/AddToWorkout'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { memo } from 'react'
 
 const ExerciseCard = ({ exercise }) => {
 
@@ -101,4 +102,4 @@ const ExerciseCard = ({ exercise }) => {
   )
 }
 
-export default ExerciseCard
+export default memo(ExerciseCard)

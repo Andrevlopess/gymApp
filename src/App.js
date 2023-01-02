@@ -15,7 +15,6 @@ import Footer from './Layout/Footer';
 import { Toaster } from 'react-hot-toast';
 import ContactCreator from './Pages/ContactCreator';
 import LikedExercises from './Pages/LikedExercises';
-import { ParallaxProvider } from 'react-scroll-parallax';
 
 function App() {
 
@@ -23,8 +22,6 @@ function App() {
   return (
     <Router>
       <ChakraProvider theme={originTheme}>
-        <ParallaxProvider>
-
           <NewWorkoutProvider>
             <ExercisesProvider>
               <FilterProvider>
@@ -42,8 +39,7 @@ function App() {
                 <Footer />
               </FilterProvider>
             </ExercisesProvider>
-          </NewWorkoutProvider>
-        </ParallaxProvider>
+          </NewWorkoutProvider>   
       </ChakraProvider>
     </Router>
   );

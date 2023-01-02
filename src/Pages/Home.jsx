@@ -5,7 +5,6 @@ import { HiArrowNarrowRight } from 'react-icons/hi'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
 import { useNavigate } from 'react-router-dom'
 import HomeExSlider from '../Components/HomeExSlider'
-import { useParallax } from 'react-scroll-parallax'
 
 const Home = () => {
 
