@@ -27,7 +27,7 @@ export const ExercisesProvider = ({ children }) => {
 
     const { workout } = useContext(NewWorkoutContext)
 
-    const [allExercises, setAllExercises] = useState(exercises)
+    const [allExercises, setAllExercises] = useState([])
     const [personalWorkout, setPersonalWorkout] = useState([])
     const [control, setControl] = useState()
     const [defaultIndex, setDefaultIndex] = useState(0)
@@ -107,7 +107,6 @@ export const ExercisesProvider = ({ children }) => {
 
     ])
 
-
     // * Save on firebase functionality
     // const salvar = () => {
     //         async function criarDado(bodyPart, equipment, gifUrl, id, name, target, liked) {
@@ -176,14 +175,16 @@ export const ExercisesProvider = ({ children }) => {
 
     // * get exercises from firebase limit=50000/day
 
-    // useEffect(() => {
-    //     const getUsers = async () => {
-    //         const data = await getDocs(ExercisesCollectionRef);
-    //         setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    //     };
+    useEffect(() => {
+        const getUsers = async () => {
+            const data = await getDocs(ExercisesCollectionRef);
+            setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
 
-    //     getUsers();
-    // }, []);
+        getUsers();
+       
+    }, []);
+
 
     // * Save workout functions --------------------------------
     useEffect(() => {
@@ -277,6 +278,7 @@ export const ExercisesProvider = ({ children }) => {
             getLikedEx,
             addLikedEx,
             removeLikedEx,
+            
             homeEx,
         }}>
             {children}

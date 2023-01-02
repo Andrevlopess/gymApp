@@ -4,8 +4,10 @@ import { useContext } from 'react'
 import { HiOutlineSearch } from 'react-icons/hi'
 import ExerciseCard from '../Components/Cards/ExerciseCard'
 import Pagination from '../Components/Pagination'
+import CardSkeleton from '../Components/CardSkeleton'
 import { ExercisesContext } from '../Contexts/ExercicesContext'
 import { FilterContext } from '../Contexts/FilterContext'
+
 
 
 const ExercicesExemples = () => {
@@ -118,10 +120,22 @@ const ExercicesExemples = () => {
 
                         </SimpleGrid>
                     }
-                    {!currentEx.length &&
+                    {!currentEx.length && search &&
                         <Flex justifyContent='center' alignItems='center' h='40vh'>
                             <Heading color='textContrast'>{`Sorry, we don't have "${title}" yet.`}</Heading>
                         </Flex>}
+
+                    {!currentEx.length && 
+                    <SimpleGrid minChildWidth='300px' spacing='10px' >
+                        {
+                            Array.from({length: 8}).map(() => {
+                                return (
+                                    <CardSkeleton/>
+                                )
+                            })
+                        }
+
+                    </SimpleGrid>}
 
                     {!!currentEx.length &&
                         <Show breakpoint='(max-width: 500px)'>

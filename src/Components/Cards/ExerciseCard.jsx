@@ -41,16 +41,10 @@ const ExerciseCard = ({ exercise }) => {
 
   useEffect(() => { checkLiked(exercise) }, [])
 
-
-
-
-
-
   return (
     <div>
       <Card color='textDistact' maxW='400px' bgColor='layoutBg' boxShadow='dark-lg'>
         <CardHeader>
-
           {exercise.gifUrl &&
             <Image src={exercise.gifUrl} minW='100px' objectFit='cover' borderRadius='4px'/>
           }
