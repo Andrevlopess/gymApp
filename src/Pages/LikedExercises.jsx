@@ -73,9 +73,6 @@ const LikedExercises = () => {
               px='20px'
               my='20px'
               bgGradient='linear(to-r, teal.500, green.500)'
-              _hover={'none'}
-              _active={'none'}
-
             >
               See all exercises</Button>
           </Flex>

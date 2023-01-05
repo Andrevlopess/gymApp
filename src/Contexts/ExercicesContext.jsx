@@ -27,7 +27,7 @@ export const ExercisesProvider = ({ children }) => {
 
     const { workout } = useContext(NewWorkoutContext)
 
-    const [allExercises, setAllExercises] = useState([])
+    const [allExercises, setAllExercises] = useState(exercises)
     const [personalWorkout, setPersonalWorkout] = useState([])
     const [control, setControl] = useState()
     const [defaultIndex, setDefaultIndex] = useState(0)
@@ -175,20 +175,20 @@ export const ExercisesProvider = ({ children }) => {
 
     // * get exercises from firebase limit=50000/day
 
-    useEffect(() => {
-        const getUsers = async () => {
-            const data = await getDocs(ExercisesCollectionRef);
-            setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
+    // useEffect(() => {
+    //     const getUsers = async () => {
+    //         const data = await getDocs(ExercisesCollectionRef);
+    //         setAllExercises(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    //     };
 
-        getUsers();
+    //     getUsers();
        
-    }, []);
+    // }, []);
 
 
     // * Save workout functions --------------------------------
     useEffect(() => {
-        const data = JSON.parse(localStorage.getItem('workouts'))
+        const data = JSON.parse(localStorage.getItem('workouts') || '[]')
 
         setPersonalWorkout(data)
 
@@ -214,13 +214,20 @@ export const ExercisesProvider = ({ children }) => {
     function updateWorkout(ex, workout) {
         const data = getWorkouts().filter((wkt) => wkt.id !== workout.id)
 
-        if (workout.workout.filter((exer) => exer.id === ex.id)) {
+
+        console.log(workout.workout);
+        console.log(ex.id);
+
+        const alreadyExists = workout.workout.filter((exer) => exer.id === ex.id)
+        
+        if (alreadyExists.length) {
 
             toast.error(`${ex.name} already exists in ${workout.title}`,{duration: 4000})
 
         } else {
 
             workout.workout.push(ex)
+
             data.push({
                 ...workout,
             })
@@ -278,7 +285,6 @@ export const ExercisesProvider = ({ children }) => {
             getLikedEx,
             addLikedEx,
             removeLikedEx,
-            
             homeEx,
         }}>
             {children}

@@ -128,9 +128,9 @@ const ExercicesExemples = () => {
                     {!currentEx.length && 
                     <SimpleGrid minChildWidth='300px' spacing='10px' >
                         {
-                            Array.from({length: 8}).map(() => {
+                            Array.from({length: 8}).map((index) => {
                                 return (
-                                    <CardSkeleton/>
+                                    <CardSkeleton key={index}/>
                                 )
                             })
                         }
