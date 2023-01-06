@@ -12,7 +12,7 @@ import { FilterContext } from '../Contexts/FilterContext'
 
 const ExercicesExemples = () => {
 
-    const { allExercises } = useContext(ExercisesContext)
+    const { allExercises, isLoading } = useContext(ExercisesContext)
 
     const {
         setSearch,
@@ -125,10 +125,10 @@ const ExercicesExemples = () => {
                             <Heading color='textContrast'>{`Sorry, we don't have "${title}" yet.`}</Heading>
                         </Flex>}
 
-                    {!currentEx.length && 
+                    {isLoading &&
                     <SimpleGrid minChildWidth='300px' spacing='10px' >
                         {
-                            Array.from({length: 8}).map((index) => {
+                            Array.from({length: 8}).map((arr ,index) => {
                                 return (
                                     <CardSkeleton key={index}/>
                                 )

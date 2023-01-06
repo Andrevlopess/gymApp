@@ -29,7 +29,7 @@ const ContactCreator = () => {
         </Flex>
 
         <Show breakpoint='(min-width: 500px)'>
-          <Image src={pic} boxSize='40vw' minW='300px' minH='300px' />
+          <Image src={pic} boxSize='40vw' minW='300px' minH='300px'  my='40px'/>
         </Show>
       </Flex>
     </Container >
